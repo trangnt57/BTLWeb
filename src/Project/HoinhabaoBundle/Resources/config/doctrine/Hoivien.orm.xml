@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Project\HoinhabaoBundle\Entity\Hoivien" table="hoivien">
+    <indexes>
+      <index name="MaToaSoan" columns="MaToaSoan"/>
+    </indexes>
+    <id name="mahv" type="integer" column="MaHV">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tendangnhap" type="string" column="TenDangNhap" length="50" nullable="false"/>
+    <field name="matkhau" type="string" column="MatKhau" length="50" nullable="false"/>
+    <field name="hoten" type="string" column="HoTen" length="128" nullable="false"/>
+    <field name="ngaysinh" type="date" column="NgaySinh" nullable="false"/>
+    <field name="gioitinh" type="string" column="GioiTinh" length="8" nullable="false"/>
+    <field name="anhdaidien" type="string" column="AnhDaiDien" length="255" nullable="false"/>
+    <field name="quequan" type="string" column="QueQuan" length="255" nullable="false"/>
+    <field name="email" type="string" column="Email" length="128" nullable="false"/>
+    <field name="cmnd" type="integer" column="CMND" nullable="false"/>
+    <field name="tieusu" type="text" column="TieuSu" nullable="false"/>
+    <field name="kichhoat" type="integer" column="KichHoat" nullable="false"/>
+    <many-to-one field="matoasoan" target-entity="Toasoan">
+      <join-columns>
+        <join-column name="MaToaSoan" referenced-column-name="MaToaSoan"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

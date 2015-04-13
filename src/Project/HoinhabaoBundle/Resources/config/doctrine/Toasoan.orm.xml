@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Project\HoinhabaoBundle\Entity\Toasoan" table="toasoan">
+    <indexes>
+      <index name="MaTinhThanh" columns="MaTinhThanh"/>
+    </indexes>
+    <id name="matoasoan" type="integer" column="MaToaSoan">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tentoasoan" type="string" column="TenToaSoan" length="128" nullable="false"/>
+    <many-to-one field="matinhthanh" target-entity="Tinhthanh">
+      <join-columns>
+        <join-column name="MaTinhThanh" referenced-column-name="MaTinhThanh"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,80 @@
+<?php
+
+namespace Project\HoinhabaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tacpham
+ *
+ * @ORM\Table(name="tacpham", indexes={@ORM\Index(name="MaHV", columns={"MaHV"}), @ORM\Index(name="MaTheLoai", columns={"MaTheLoai"})})
+ * @ORM\Entity
+ */
+class Tacpham
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TenTacPham", type="string", length=50, nullable=false)
+     */
+    private $tentacpham;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MoTa", type="text", nullable=false)
+     */
+    private $mota;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="NgaySangTac", type="date", nullable=false)
+     */
+    private $ngaysangtac;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ChiTiet", type="text", nullable=true)
+     */
+    private $chitiet;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LienKet", type="string", length=255, nullable=true)
+     */
+    private $lienket;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MaTacPham", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $matacpham;
+
+    /**
+     * @var \Project\HoinhabaoBundle\Entity\Theloai
+     *
+     * @ORM\ManyToOne(targetEntity="Project\HoinhabaoBundle\Entity\Theloai")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="MaTheLoai", referencedColumnName="MaTheLoai")
+     * })
+     */
+    private $matheloai;
+
+    /**
+     * @var \Project\HoinhabaoBundle\Entity\Hoivien
+     *
+     * @ORM\ManyToOne(targetEntity="Project\HoinhabaoBundle\Entity\Hoivien")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="MaHV", referencedColumnName="MaHV")
+     * })
+     */
+    private $mahv;
+
+
+}

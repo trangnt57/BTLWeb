@@ -1,0 +1,13 @@
+project_hoinhabao_homepage:
+    path:     /hoivien/
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:index }
+
+project_hoinhabao_add:
+    path:     /hoivien/add
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:add }
+
+
+project_hoinhabao_show:
+    path:     /hoivien/{tendangnhap}
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:show }
+

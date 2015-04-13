@@ -1,0 +1,39 @@
+<?php
+
+namespace Project\HoinhabaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Theloai
+ *
+ * @ORM\Table(name="theloai")
+ * @ORM\Entity
+ */
+class Theloai
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TenTheLoai", type="string", length=50, nullable=false)
+     */
+    private $tentheloai;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MoTa", type="text", nullable=false)
+     */
+    private $mota;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="MaTheLoai", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $matheloai;
+
+
+}

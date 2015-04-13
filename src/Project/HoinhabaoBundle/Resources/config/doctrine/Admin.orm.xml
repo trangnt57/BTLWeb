@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Project\HoinhabaoBundle\Entity\Admin" table="admin">
+    <indexes>
+      <index name="MaHV" columns="MaHV"/>
+    </indexes>
+    <id name="maadmin" type="integer" column="MaAdmin">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="mahv" target-entity="Hoivien">
+      <join-columns>
+        <join-column name="MaHV" referenced-column-name="MaHV"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

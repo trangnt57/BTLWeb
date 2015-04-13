@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Project\HoinhabaoBundle\Entity\Theloai" table="theloai">
+    <id name="matheloai" type="integer" column="MaTheLoai">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="tentheloai" type="string" column="TenTheLoai" length="50" nullable="false"/>
+    <field name="mota" type="text" column="MoTa" nullable="false"/>
+  </entity>
+</doctrine-mapping>

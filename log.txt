@@ -1,0 +1,18 @@
+1.Tạo project
+2. generate entities from an existing database
+http://symfony.com/doc/current/cookbook/doctrine/reverse_engineering.html
+3.dữ liệu
+- mã hội viên 1xxxx
+- mã tác phẩm 2xxxx
+- mã giải thưởng 3xxxx
+- mã admin 4xxxx
+- mã tỉnh 5xxxx
+- mã tòa soạn 6xxxx
+- mã quyền 7xxxx
+- Mã thể loại 8xxxx
+
+4. tạo form bằng formbuilder
+http://symfony.com/doc/current/book/forms.html
+
+5.
+http://symfony.com/blog/new-in-symfony-2-4-the-expressionlanguage-component
