@@ -32,4 +32,37 @@ class Admin
     private $mahv;
 
 
+
+    /**
+     * Get maadmin
+     *
+     * @return integer 
+     */
+    public function getMaadmin()
+    {
+        return $this->maadmin;
+    }
+
+    /**
+     * Set mahv
+     *
+     * @param \Project\HoinhabaoBundle\Entity\Hoivien $mahv
+     * @return Admin
+     */
+    public function setMahv(\Project\HoinhabaoBundle\Entity\Hoivien $mahv = null)
+    {
+        $this->mahv = $mahv;
+
+        return $this;
+    }
+
+    /**
+     * Get mahv
+     *
+     * @return \Project\HoinhabaoBundle\Entity\Hoivien 
+     */
+    public function getMahv()
+    {
+        return $this->mahv;
+    }
 }

@@ -11,3 +11,10 @@ project_hoinhabao_show:
     path:     /hoivien/{tendangnhap}
     defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:show }
 
+project_hoinhabao_edit:
+    path:     /hoivien/{tendangnhap}/edit
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:edit }
+
+project_hoinhabao_delete:
+    path:     /hoivien/{tendangnhap}/delete
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:delete }

@@ -147,6 +147,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_hoinhabao_show')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::showAction',));
             }
 
+            // project_hoinhabao_edit
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_hoinhabao_edit')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::editAction',));
+            }
+
+            // project_hoinhabao_delete
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_hoinhabao_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::deleteAction',));
+            }
+
         }
 
         // homepage

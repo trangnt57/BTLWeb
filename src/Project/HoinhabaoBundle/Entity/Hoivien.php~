@@ -109,4 +109,290 @@ class Hoivien
     private $matoasoan;
 
 
+
+    /**
+     * Set tendangnhap
+     *
+     * @param string $tendangnhap
+     * @return Hoivien
+     */
+    public function setTendangnhap($tendangnhap)
+    {
+        $this->tendangnhap = $tendangnhap;
+
+        return $this;
+    }
+
+    /**
+     * Get tendangnhap
+     *
+     * @return string 
+     */
+    public function getTendangnhap()
+    {
+        return $this->tendangnhap;
+    }
+
+    /**
+     * Set matkhau
+     *
+     * @param string $matkhau
+     * @return Hoivien
+     */
+    public function setMatkhau($matkhau)
+    {
+        $this->matkhau = $matkhau;
+
+        return $this;
+    }
+
+    /**
+     * Get matkhau
+     *
+     * @return string 
+     */
+    public function getMatkhau()
+    {
+        return $this->matkhau;
+    }
+
+    /**
+     * Set hoten
+     *
+     * @param string $hoten
+     * @return Hoivien
+     */
+    public function setHoten($hoten)
+    {
+        $this->hoten = $hoten;
+
+        return $this;
+    }
+
+    /**
+     * Get hoten
+     *
+     * @return string 
+     */
+    public function getHoten()
+    {
+        return $this->hoten;
+    }
+
+    /**
+     * Set ngaysinh
+     *
+     * @param \DateTime $ngaysinh
+     * @return Hoivien
+     */
+    public function setNgaysinh($ngaysinh)
+    {
+        $this->ngaysinh = $ngaysinh;
+
+        return $this;
+    }
+
+    /**
+     * Get ngaysinh
+     *
+     * @return \DateTime 
+     */
+    public function getNgaysinh()
+    {
+        return $this->ngaysinh;
+    }
+
+    /**
+     * Set gioitinh
+     *
+     * @param string $gioitinh
+     * @return Hoivien
+     */
+    public function setGioitinh($gioitinh)
+    {
+        $this->gioitinh = $gioitinh;
+
+        return $this;
+    }
+
+    /**
+     * Get gioitinh
+     *
+     * @return string 
+     */
+    public function getGioitinh()
+    {
+        return $this->gioitinh;
+    }
+
+    /**
+     * Set anhdaidien
+     *
+     * @param string $anhdaidien
+     * @return Hoivien
+     */
+    public function setAnhdaidien($anhdaidien)
+    {
+        $this->anhdaidien = $anhdaidien;
+
+        return $this;
+    }
+
+    /**
+     * Get anhdaidien
+     *
+     * @return string 
+     */
+    public function getAnhdaidien()
+    {
+        return $this->anhdaidien;
+    }
+
+    /**
+     * Set quequan
+     *
+     * @param string $quequan
+     * @return Hoivien
+     */
+    public function setQuequan($quequan)
+    {
+        $this->quequan = $quequan;
+
+        return $this;
+    }
+
+    /**
+     * Get quequan
+     *
+     * @return string 
+     */
+    public function getQuequan()
+    {
+        return $this->quequan;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Hoivien
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set cmnd
+     *
+     * @param integer $cmnd
+     * @return Hoivien
+     */
+    public function setCmnd($cmnd)
+    {
+        $this->cmnd = $cmnd;
+
+        return $this;
+    }
+
+    /**
+     * Get cmnd
+     *
+     * @return integer 
+     */
+    public function getCmnd()
+    {
+        return $this->cmnd;
+    }
+
+    /**
+     * Set tieusu
+     *
+     * @param string $tieusu
+     * @return Hoivien
+     */
+    public function setTieusu($tieusu)
+    {
+        $this->tieusu = $tieusu;
+
+        return $this;
+    }
+
+    /**
+     * Get tieusu
+     *
+     * @return string 
+     */
+    public function getTieusu()
+    {
+        return $this->tieusu;
+    }
+
+    /**
+     * Set kichhoat
+     *
+     * @param integer $kichhoat
+     * @return Hoivien
+     */
+    public function setKichhoat($kichhoat)
+    {
+        $this->kichhoat = $kichhoat;
+
+        return $this;
+    }
+
+    /**
+     * Get kichhoat
+     *
+     * @return integer 
+     */
+    public function getKichhoat()
+    {
+        return $this->kichhoat;
+    }
+
+    /**
+     * Get mahv
+     *
+     * @return integer 
+     */
+    public function getMahv()
+    {
+        return $this->mahv;
+    }
+
+    /**
+     * Set matoasoan
+     *
+     * @param \Project\HoinhabaoBundle\Entity\Toasoan $matoasoan
+     * @return Hoivien
+     */
+    public function setMatoasoan(\Project\HoinhabaoBundle\Entity\Toasoan $matoasoan = null)
+    {
+        $this->matoasoan = $matoasoan;
+
+        return $this;
+    }
+
+    /**
+     * Get matoasoan
+     *
+     * @return \Project\HoinhabaoBundle\Entity\Toasoan 
+     */
+    public function getMatoasoan()
+    {
+        return $this->matoasoan;
+    }
 }

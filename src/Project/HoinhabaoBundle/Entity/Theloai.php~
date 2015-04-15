@@ -36,4 +36,60 @@ class Theloai
     private $matheloai;
 
 
+
+    /**
+     * Set tentheloai
+     *
+     * @param string $tentheloai
+     * @return Theloai
+     */
+    public function setTentheloai($tentheloai)
+    {
+        $this->tentheloai = $tentheloai;
+
+        return $this;
+    }
+
+    /**
+     * Get tentheloai
+     *
+     * @return string 
+     */
+    public function getTentheloai()
+    {
+        return $this->tentheloai;
+    }
+
+    /**
+     * Set mota
+     *
+     * @param string $mota
+     * @return Theloai
+     */
+    public function setMota($mota)
+    {
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string 
+     */
+    public function getMota()
+    {
+        return $this->mota;
+    }
+
+    /**
+     * Get matheloai
+     *
+     * @return integer 
+     */
+    public function getMatheloai()
+    {
+        return $this->matheloai;
+    }
 }

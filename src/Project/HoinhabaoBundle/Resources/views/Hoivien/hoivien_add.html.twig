@@ -1,1 +1,5 @@
+{% if form.delete is defined %}
+	Bạn có muốn xóa hội viên này: {{form.vars.value.tendangnhap}}?
+{% endif %}
+
 {{form(form)}}

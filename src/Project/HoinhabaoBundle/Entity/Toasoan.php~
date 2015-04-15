@@ -39,4 +39,60 @@ class Toasoan
     private $matinhthanh;
 
 
+
+    /**
+     * Set tentoasoan
+     *
+     * @param string $tentoasoan
+     * @return Toasoan
+     */
+    public function setTentoasoan($tentoasoan)
+    {
+        $this->tentoasoan = $tentoasoan;
+
+        return $this;
+    }
+
+    /**
+     * Get tentoasoan
+     *
+     * @return string 
+     */
+    public function getTentoasoan()
+    {
+        return $this->tentoasoan;
+    }
+
+    /**
+     * Get matoasoan
+     *
+     * @return integer 
+     */
+    public function getMatoasoan()
+    {
+        return $this->matoasoan;
+    }
+
+    /**
+     * Set matinhthanh
+     *
+     * @param \Project\HoinhabaoBundle\Entity\Tinhthanh $matinhthanh
+     * @return Toasoan
+     */
+    public function setMatinhthanh(\Project\HoinhabaoBundle\Entity\Tinhthanh $matinhthanh = null)
+    {
+        $this->matinhthanh = $matinhthanh;
+
+        return $this;
+    }
+
+    /**
+     * Get matinhthanh
+     *
+     * @return \Project\HoinhabaoBundle\Entity\Tinhthanh 
+     */
+    public function getMatinhthanh()
+    {
+        return $this->matinhthanh;
+    }
 }

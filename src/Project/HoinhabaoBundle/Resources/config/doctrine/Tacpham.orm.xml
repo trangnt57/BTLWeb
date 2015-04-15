@@ -3,7 +3,7 @@
   <entity name="Project\HoinhabaoBundle\Entity\Tacpham" table="tacpham">
     <indexes>
       <index name="MaHV" columns="MaHV"/>
-      <index name="MaTheLoai" columns="MaTheLoai"/>
+      <index name="tacpham_ibfk_2" columns="MaTheLoai"/>
     </indexes>
     <id name="matacpham" type="integer" column="MaTacPham">
       <generator strategy="IDENTITY"/>
@@ -13,14 +13,14 @@
     <field name="ngaysangtac" type="date" column="NgaySangTac" nullable="false"/>
     <field name="chitiet" type="text" column="ChiTiet" nullable="true"/>
     <field name="lienket" type="string" column="LienKet" length="255" nullable="true"/>
-    <many-to-one field="matheloai" target-entity="Theloai">
-      <join-columns>
-        <join-column name="MaTheLoai" referenced-column-name="MaTheLoai"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="mahv" target-entity="Hoivien">
       <join-columns>
         <join-column name="MaHV" referenced-column-name="MaHV"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="matheloai" target-entity="Theloai">
+      <join-columns>
+        <join-column name="MaTheLoai" referenced-column-name="MaTheLoai"/>
       </join-columns>
     </many-to-one>
   </entity>

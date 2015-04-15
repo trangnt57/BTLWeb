@@ -22,7 +22,10 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
         // line 2
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "HoTen", array()), "html", null, true);
         echo "
-";
+<img src=\"";
+        // line 3
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(((("upload/" . $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "MaHV", array())) . "/") . $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "AnhDaiDien", array()))), "html", null, true);
+        echo "\" alt=\"\" height=\"525\" width=\"666\" />";
     }
 
     public function getTemplateName()
@@ -37,6 +40,6 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
 
     public function getDebugInfo()
     {
-        return array (  23 => 2,  19 => 1,);
+        return array (  27 => 3,  23 => 2,  19 => 1,);
     }
 }

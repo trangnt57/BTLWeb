@@ -1,4 +1,4 @@
-1.Tạo project
+﻿1.Tạo project
 2. generate entities from an existing database
 http://symfony.com/doc/current/cookbook/doctrine/reverse_engineering.html
 3.dữ liệu
@@ -16,3 +16,6 @@ http://symfony.com/doc/current/book/forms.html
 
 5.
 http://symfony.com/blog/new-in-symfony-2-4-the-expressionlanguage-component
+
+6.upload file with doctrine in symfony
+http://symfony2.ylly.fr/upload-file-with-doctrine-in-symfony2-jordscream/

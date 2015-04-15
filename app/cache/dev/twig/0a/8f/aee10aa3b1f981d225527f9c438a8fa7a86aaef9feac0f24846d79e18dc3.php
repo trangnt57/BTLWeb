@@ -16,19 +16,34 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
+        echo "<a href=\"";
+        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
+        echo "\">Thêm hội viên </a>
+
+";
+        // line 3
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["hoivien"]) ? $context["hoivien"] : $this->getContext($context, "hoivien")));
         foreach ($context['_seq'] as $context["_key"] => $context["eachhoivien"]) {
-            // line 2
+            // line 4
             echo "\t<h3><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()), "html", null, true);
             echo "</a></h3>
 \t<h4>";
-            // line 3
+            // line 5
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "HoTen", array()), "html", null, true);
             echo "</h4>
+\t<a href=\"";
+            // line 6
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
+            echo "\">Sửa</a>|
+\t<a href=\"";
+            // line 7
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_delete", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
+            echo "\">Xóa</a>
+
 \t<hr/>
 ";
         }
@@ -49,6 +64,6 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
 
     public function getDebugInfo()
     {
-        return array (  30 => 3,  23 => 2,  19 => 1,);
+        return array (  44 => 7,  40 => 6,  36 => 5,  29 => 4,  25 => 3,  19 => 1,);
     }
 }
