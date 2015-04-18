@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Project\HoinhabaoBundle\Entity\Toasoan" table="toasoan">
     <indexes>
-      <index name="MaTinhThanh" columns="MaTinhThanh"/>
+      <index name="FK_34565DE25549239C" columns="MaTinhThanh"/>
     </indexes>
     <id name="matoasoan" type="integer" column="MaToaSoan">
       <generator strategy="IDENTITY"/>

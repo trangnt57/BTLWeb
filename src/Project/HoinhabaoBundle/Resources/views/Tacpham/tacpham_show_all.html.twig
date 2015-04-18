@@ -1,0 +1,16 @@
+{{tendangnhap}}
+{% for tp in tacpham %}
+	<h3>{{tp.TenTacPham}}</h3>
+	<h3>{{tp.MoTa}}</h3>
+	<h3>{{tp.NgaySangTac|date('Y-m-d')}}</h3>
+	<h3>{{tp.MaTheLoai}}</h3>
+	
+{% endfor %}
+
+<hr/>
+{% for gt in giaithuong %}
+	<h3>{{gt.TenGiaiThuong}}</h3>
+	<h3>{{gt.NgayDatGiai|date('Y-m-d')}}</h3>
+	<h3>{{gt.MaTacPham}}</h3>
+	
+{% endfor %}

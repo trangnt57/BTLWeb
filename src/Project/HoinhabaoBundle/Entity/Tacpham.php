@@ -33,13 +33,7 @@ class Tacpham
      */
     private $ngaysangtac;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ChiTiet", type="text", nullable=true)
-     */
-    private $chitiet;
-
+   
     /**
      * @var string
      *
@@ -147,28 +141,7 @@ class Tacpham
         return $this->ngaysangtac;
     }
 
-    /**
-     * Set chitiet
-     *
-     * @param string $chitiet
-     * @return Tacpham
-     */
-    public function setChitiet($chitiet)
-    {
-        $this->chitiet = $chitiet;
-
-        return $this;
-    }
-
-    /**
-     * Get chitiet
-     *
-     * @return string 
-     */
-    public function getChitiet()
-    {
-        return $this->chitiet;
-    }
+  
 
     /**
      * Set lienket
@@ -247,5 +220,9 @@ class Tacpham
     public function getMahv()
     {
         return $this->mahv;
+    }
+
+    public function __toString(){
+        return $this->tentacpham;
     }
 }

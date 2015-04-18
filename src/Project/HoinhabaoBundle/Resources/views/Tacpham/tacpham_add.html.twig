@@ -1,0 +1,4 @@
+{% if form.delete is defined %}
+	Bạn có chắc chắn muốn xóa tác phẩm này: {{form.vars.value.title}}?
+{% endif %}
+{{form(form)}}

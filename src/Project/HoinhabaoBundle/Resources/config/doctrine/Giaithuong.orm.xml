@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Project\HoinhabaoBundle\Entity\Giaithuong" table="giaithuong">
     <indexes>
-      <index name="MaHV" columns="MaHV"/>
-      <index name="MaTacPham" columns="MaTacPham"/>
+      <index name="FK_2C2DF4A9DD199E24" columns="MaTacPham"/>
+      <index name="FK_2C2DF4A9BB87CF27" columns="MaHV"/>
     </indexes>
     <id name="magiaithuong" type="integer" column="MaGiaiThuong">
       <generator strategy="IDENTITY"/>

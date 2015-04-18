@@ -464,8 +464,8 @@
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">C:\ProgramData\Oracle\Java\javapath\java.EXE</parameter>
     <parameter key="assetic.node.bin">C:\Program Files\nodejs\\node.EXE</parameter>
-    <parameter key="assetic.ruby.bin">C:\RailsFTW416213\bin\ruby.EXE</parameter>
-    <parameter key="assetic.sass.bin">C:\RailsFTW416213\bin\sass.BAT</parameter>
+    <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
+    <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
     <parameter key="assetic.controller.class">Symfony\Bundle\AsseticBundle\Controller\AsseticController</parameter>

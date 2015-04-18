@@ -2,8 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Project\HoinhabaoBundle\Entity\Tacpham" table="tacpham">
     <indexes>
-      <index name="MaHV" columns="MaHV"/>
-      <index name="tacpham_ibfk_2" columns="MaTheLoai"/>
+      <index name="FK_FA6F8723BB87CF27" columns="MaHV"/>
+      <index name="FK_FA6F87236DBB00F7" columns="MaTheLoai"/>
     </indexes>
     <id name="matacpham" type="integer" column="MaTacPham">
       <generator strategy="IDENTITY"/>
@@ -11,7 +11,6 @@
     <field name="tentacpham" type="string" column="TenTacPham" length="50" nullable="false"/>
     <field name="mota" type="text" column="MoTa" nullable="false"/>
     <field name="ngaysangtac" type="date" column="NgaySangTac" nullable="false"/>
-    <field name="chitiet" type="text" column="ChiTiet" nullable="true"/>
     <field name="lienket" type="string" column="LienKet" length="255" nullable="true"/>
     <many-to-one field="mahv" target-entity="Hoivien">
       <join-columns>

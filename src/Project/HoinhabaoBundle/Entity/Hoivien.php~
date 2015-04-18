@@ -3,11 +3,14 @@
 namespace Project\HoinhabaoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * Hoivien
  *
  * @ORM\Table(name="hoivien", indexes={@ORM\Index(name="MaToaSoan", columns={"MaToaSoan"})})
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity
  */
 class Hoivien
@@ -48,8 +51,8 @@ class Hoivien
     private $gioitinh;
 
     /**
-     * @var string
-     *
+     * @var string $anhdaidien
+     * @Assert\File( maxSize = "1024k", mimeTypesMessage = "Please upload a valid Image")
      * @ORM\Column(name="AnhDaiDien", type="string", length=255, nullable=false)
      */
     private $anhdaidien;
@@ -395,4 +398,9 @@ class Hoivien
     {
         return $this->matoasoan;
     }
+
+
+
+
+   
 }

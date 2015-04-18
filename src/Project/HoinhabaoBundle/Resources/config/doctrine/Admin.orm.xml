@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Project\HoinhabaoBundle\Entity\Admin" table="admin">
     <indexes>
-      <index name="MaHV" columns="MaHV"/>
+      <index name="FK_880E0D76BB87CF27" columns="MaHV"/>
     </indexes>
     <id name="maadmin" type="integer" column="MaAdmin">
       <generator strategy="IDENTITY"/>

@@ -5,7 +5,7 @@ namespace Project\HoinhabaoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * Hoivien
  *
@@ -402,58 +402,5 @@ class Hoivien
 
 
 
-     public function getFullImagePath() {
-        return null === $this->anhdaidien ? null : $this->getUploadRootDir(). $this->anhdaidien;
-    }
- 
-    protected function getUploadRootDir() {
-        // the absolute directory path where uploaded documents should be saved
-        return $this->getTmpUploadRootDir().$this->getMahv()."/";
-    }
- 
-    protected function getTmpUploadRootDir() {
-        // the absolute directory path where uploaded documents should be saved
-        return __DIR__ . '/../../../../web/upload/';
-    }
- 
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function uploadImage() {
-        // the file property can be empty if the field is not required
-        if (null === $this->anhdaidien) {
-            return;
-        }
-        if(!$this->mahv){
-            $this->anhdaidien->move($this->getTmpUploadRootDir(), $this->anhdaidien->getClientOriginalName());
-        }else{
-            $this->anhdaidien->move($this->getUploadRootDir(), $this->anhdaidien->getClientOriginalName());
-        }
-        $this->setAnhdaidien($this->anhdaidien->getClientOriginalName());
-    }
- 
-    /**
-     * @ORM\PostPersist()
-     */
-    public function moveImage()
-    {
-        if (null === $this->anhdaidien) {
-            return;
-        }
-        if(!is_dir($this->getUploadRootDir())){
-            mkdir($this->getUploadRootDir());
-        }
-        copy($this->getTmpUploadRootDir().$this->anhdaidien, $this->getFullImagePath());
-        unlink($this->getTmpUploadRootDir().$this->anhdaidien);
-    }
- 
-    /**
-     * @ORM\PreRemove()
-     */
-    public function removeImage()
-    {
-        unlink($this->getFullImagePath());
-        rmdir($this->getUploadRootDir());
-    }
+   
 }
