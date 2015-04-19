@@ -157,5 +157,39 @@ class HoivienController extends Controller
         $build['form'] = $form->createView();
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_add.html.twig', $build);
     }
+
+    public function multideleteAction(Request $request){
+        if(empty($_POST['xoa'])){
+          throw $this->createNotFoundException(
+                  'Không có hội viên nào được chọn'
+          );  
+        }
+        else{
+           foreach ($_POST['xoa'] as $checked){
+               $em = $this->getDoctrine()->getManager();
+               $hoivien = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByMahv(''.$checked.'');
+               $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMahv(''.$hoivien->getMahv().'');
+               $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findByMahv(''.$hoivien->getMahv().'');
+               if(!$giaithuong && !$tacpham){
+                    $em->remove($hoivien);
+                    $em->flush();
+                }else{
+                    foreach($giaithuong as $gt){
+                        $this->getDoctrine()->getManager()->remove($gt);
+                        $this->getDoctrine()->getManager()->flush();
+                    }
+                    foreach ($tacpham as $tp) {
+                        $this->getDoctrine()->getManager()->remove($tp);
+                        $this->getDoctrine()->getManager()->flush();
+                    }
+                    $em->remove($hoivien);
+                    $em->flush();
+                } 
+            }
+       
+            return new Response('Xóa thành công');
+           
+        }
+    }
 }
 ?>

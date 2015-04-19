@@ -72,7 +72,7 @@ class GiaithuongController extends Controller
 
     public function deleteAction($magiaithuong, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');;
+        $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');
         if (!$giaithuong) {
           throw $this->createNotFoundException(
                   'Không tìm thấy hội viên ' . $giaithuong
@@ -90,5 +90,23 @@ class GiaithuongController extends Controller
         
         $build['form'] = $form->createView();
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
+    }
+
+
+    public function multideleteAction(Request $request){
+        if(empty($_POST['xoa'])){
+          throw $this->createNotFoundException(
+                  'Không có giải thưởng nào được chọn'
+          );  
+        }
+        else{
+           foreach ($_POST['xoa'] as $checked){
+               $em = $this->getDoctrine()->getManager();
+               $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$checked.'');
+               $em->remove($giaithuong);
+                $em->flush(); 
+            }
+            return new Response('Xóa thành công');
+        }
     }
 }

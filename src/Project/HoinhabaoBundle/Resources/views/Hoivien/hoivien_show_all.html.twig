@@ -1,10 +1,12 @@
 <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên </a>
-
+<form action="{{path('project_hoivien_multidelete')}}" method="post">
+	<input type='submit' value='xóa' name='deletehoivien'>
 {% for eachhoivien in hoivien %}
 	<h3><a href="{{path('project_hoinhabao_show',{'tendangnhap':eachhoivien.TenDangNhap})}}">{{eachhoivien.TenDangNhap}}</a></h3>
 	<h4>{{eachhoivien.HoTen}}</h4>
 	<a href="{{path('project_hoinhabao_edit', {'tendangnhap':eachhoivien.TenDangNhap}) }}">Sửa</a>|
 	<a href="{{path('project_hoinhabao_delete', {'tendangnhap':eachhoivien.TenDangNhap}) }}">Xóa</a>
-
+	<input type='checkbox' name='xoa[]' value='{{eachhoivien.Mahv}}'>
 	<hr/>
 {% endfor %}
+</form>

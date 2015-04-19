@@ -85,7 +85,7 @@ class TacphamController extends Controller
     }
 
 
-     public function deleteAction($matacpham, Request $request) {
+    public function deleteAction($matacpham, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');;
         if (!$tacpham) {
@@ -109,6 +109,35 @@ class TacphamController extends Controller
         
         $build['form'] = $form->createView();
         return $this->render('ProjectHoinhabaoBundle:tacpham:tacpham_add.html.twig', $build);
+    }
+
+    public function multideleteAction(Request $request){
+        if(empty($_POST['xoa'])){
+          throw $this->createNotFoundException(
+                  'Không có tác phẩm nào được chọn'
+          );  
+        }
+        else{
+           foreach ($_POST['xoa'] as $checked){
+               $em = $this->getDoctrine()->getManager();
+               $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$checked.'');
+               $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMatacpham(''.$tacpham->getMatacpham().'');
+               if(!$giaithuong){
+                    $em->remove($tacpham);
+                    $em->flush();
+                }else{
+                    foreach($giaithuong as $gt){
+                        $this->getDoctrine()->getManager()->remove($gt);
+                        $this->getDoctrine()->getManager()->flush();
+                    }
+                    $em->remove($tacpham);
+                    $em->flush();
+                } 
+            }
+       
+            return new Response('Xóa thành công');
+           
+        }
     }
    
 }

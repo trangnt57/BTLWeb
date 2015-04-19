@@ -142,6 +142,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::addAction',  '_route' => 'project_hoinhabao_add',);
             }
 
+            // project_giaithuong_multidelete
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/giaithuong/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_multidelete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::multideleteAction',));
+            }
+
+            // project_tacpham_multidelete
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/tacpham/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_multidelete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::multideleteAction',));
+            }
+
+            // project_hoivien_multidelete
+            if ($pathinfo === '/hoivien/delete') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::multideleteAction',  '_route' => 'project_hoivien_multidelete',);
+            }
+
             // project_hoinhabao_show
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_hoinhabao_show')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::showAction',));
@@ -163,7 +178,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // project_tacpham_add
-            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/add$#s', $pathinfo, $matches)) {
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/addtacpham$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::addAction',));
             }
 

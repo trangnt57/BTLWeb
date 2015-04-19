@@ -1,17 +1,22 @@
 {{tendangnhap}}
+<form action="{{path('project_tacpham_multidelete',{'tendangnhap':tendangnhap} )}}" method="post">
+	<input type='submit' value='xóa' name='deletetacpham'>
 {% for tp in tacpham %}
 	<h3>{{tp.TenTacPham}}</h3>
 	<h3>{{tp.MoTa}}</h3>
 	<h3>{{tp.NgaySangTac|date('Y-m-d')}}</h3>
 	<h3>{{tp.MaTheLoai}}</h3>
-	
+	<input type='checkbox' name='xoa[]' value='{{tp.MaTacPham}}'>
 {% endfor %}
-
+</form>
 <hr/>
 
+<form action="{{path('project_giaithuong_multidelete',{'tendangnhap':tendangnhap} )}}" method="post">
+	<input type='submit' value='xóa' name='deletegiaithuong'>
 {% for gt in giaithuong %}
 	<h3>{{gt.TenGiaiThuong}}</h3>
 	<h3>{{gt.NgayDatGiai|date('Y-m-d')}}</h3>
 	<h3>{{gt.MaTacPham}}</h3>
+	<input type='checkbox' name='xoa[]' value='{{gt.MaGiaiThuong}}'>
 {% endfor %}
 </form>
