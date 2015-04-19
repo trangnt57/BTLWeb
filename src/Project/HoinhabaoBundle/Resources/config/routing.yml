@@ -29,8 +29,12 @@ project_tacpham_add:
     defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:add }
 
 project_tacpham_edit:
-    path:     /hoivien/{tendangnhap}/{tentacpham}/edit
+    path:     /hoivien/{tendangnhap}/edit/{matacpham}
     defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:edit }
+
+project_tacpham_delete:
+    path:     /hoivien/{tendangnhap}/delete/{matacpham}
+    defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:delete }
 
 
 project_giathuong_add:
@@ -40,4 +44,8 @@ project_giathuong_add:
 project_giathuong_edit:
     path:     /hoivien/{tendangnhap}/{magiaithuong}/edit
     defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:edit }
+
+project_giathuong_delete:
+    path:     /hoivien/{tendangnhap}/{magiaithuong}/delete
+    defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:delete }
 

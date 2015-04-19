@@ -69,4 +69,26 @@ class GiaithuongController extends Controller
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
+
+    public function deleteAction($magiaithuong, Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');;
+        if (!$giaithuong) {
+          throw $this->createNotFoundException(
+                  'Không tìm thấy hội viên ' . $giaithuong
+          );
+        }
+        $form = $this->createFormBuilder($giaithuong)
+                ->add('delete', 'submit')
+                ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+          $em->remove($giaithuong);
+          $em->flush();
+          return new Response('Xóa giải thưởng thành công');
+        }
+        
+        $build['form'] = $form->createView();
+        return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
+    }
 }

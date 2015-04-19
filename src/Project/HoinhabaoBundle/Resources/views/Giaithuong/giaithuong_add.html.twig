@@ -1,1 +1,5 @@
+{% if form.delete is defined %}
+ Bạn có chắc chắn muốn xóa giải thưởng: {{form.vars.value.tengiaithuong}}
+{% endif %}
+
 {{form(form)}}

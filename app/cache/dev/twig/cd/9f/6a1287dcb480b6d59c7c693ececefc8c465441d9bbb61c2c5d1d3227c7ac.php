@@ -16,6 +16,18 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
+        if ($this->getAttribute((isset($context["form"]) ? $context["form"] : null), "delete", array(), "any", true, true)) {
+            // line 2
+            echo "\tBạn có chắc chắn muốn xóa tác phẩm này: ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "vars", array()), "value", array()), "tentacpham", array()), "html", null, true);
+            echo "?
+";
+        }
+        // line 4
+        echo "
+
+";
+        // line 6
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
     }
 
@@ -31,6 +43,6 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
 
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return array (  31 => 6,  27 => 4,  21 => 2,  19 => 1,);
     }
 }

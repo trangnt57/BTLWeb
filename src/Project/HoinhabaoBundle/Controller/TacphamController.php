@@ -55,11 +55,11 @@ class TacphamController extends Controller
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
-    public function editAction($tentacpham, Request $request){
+    public function editAction($matacpham, Request $request){
     	$em = $this->getDoctrine()->getManager();
-    	$tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByTentacpham(''.$tentacpham.'');
+    	$tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
     	if(!$tacpham){
-    		throw $this->createNotFoundException('Không tìm thấy tác phẩm với tên:' . $tentacpham);
+    		throw $this->createNotFoundException('Không tìm thấy tác phẩm với ma:' . $matacpham);
     	}
 
     	$form = $this->createFormBuilder($tacpham)
@@ -84,5 +84,31 @@ class TacphamController extends Controller
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
+
+     public function deleteAction($matacpham, Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');;
+        if (!$tacpham) {
+          throw $this->createNotFoundException(
+                  'Không tìm thấy tác phẩm ' . $tacpham
+          );
+        }
+        $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMatacpham(''.$tacpham->getMatacpham().'');
+        if($giaithuong){
+            return new Response('Bạn phải xóa những giải thưởng liên quan đến tác phẩm này trước khi xóa tác phẩm');
+        }
+        $form = $this->createFormBuilder($tacpham)
+                ->add('delete', 'submit')
+                ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+          $em->remove($tacpham);
+          $em->flush();
+          return new Response('Xóa tác phẩm thành công');
+        }
+        
+        $build['form'] = $form->createView();
+        return $this->render('ProjectHoinhabaoBundle:tacpham:tacpham_add.html.twig', $build);
+    }
    
 }
