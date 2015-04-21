@@ -192,19 +192,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::deleteAction',));
             }
 
-            // project_giathuong_add
+            // project_giaithuong
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/giaithuong$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::indexAction',));
+            }
+
+            // project_giaithuong_add
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/addgiaithuong$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giathuong_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::addAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::addAction',));
             }
 
-            // project_giathuong_edit
+            // project_giaithuong_edit
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/(?P<magiaithuong>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giathuong_edit')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::editAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_edit')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::editAction',));
             }
 
-            // project_giathuong_delete
+            // project_giaithuong_delete
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/(?P<magiaithuong>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giathuong_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::deleteAction',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::deleteAction',));
             }
 
         }

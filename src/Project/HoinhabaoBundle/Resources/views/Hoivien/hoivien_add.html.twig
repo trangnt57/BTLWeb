@@ -1,5 +1,183 @@
-{% if form.delete is defined %}
-	Bạn có muốn xóa hội viên này: {{form.vars.value.tendangnhap}}?
-{% endif %}
+<html>
 
-{{form(form)}}
+<head>
+
+    <link href="{{ asset('bundles/projecthoinhabao/css/bootstrap.min.css') }}" rel="stylesheet">
+   	<link href="{{ asset('bundles/projecthoinhabao/material/css/ripples.min.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('bundles/projecthoinhabao/material/css/material-wfont.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projecthoinhabao/css/style.css') }}" rel="stylesheet">
+    <title>Thêm hội viên</title>
+    <style type="text/css">
+        #addhoivien-button{
+            font-size: 18px;
+        }
+        ul{
+              list-style: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{path('project_hoinhabao_homepage')}}">Trang Chủ</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                        <p style="margin: 0px; padding: 0px;">
+                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Admin
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="javascript:void(0)">Sửa thông tin cá nhân</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="javascript:void(0)">Thoát</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="side-option">
+                        <div class="toolbar">
+                            <legend>Chức năng</legend>
+                        </div>
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <i class="mdi-social-person-add"></i>
+                                    <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
+                                </li>
+                                <li>
+                                    <i class="mdi-action-list"></i>
+                                    <a href="{{path('project_hoinhabao_homepage')}}">Danh sách hội viên</a>
+                                </li>
+                                <li>
+                                    <i class="mdi-image-filter-none"></i>
+                                    <a>Báo cáo</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9" style="border-left: 2px solid red;">
+                    
+                   
+                        {{ form_start(form) }}
+    					<fieldset>
+                            <legend>Thêm Hội Viên</legend>
+                                
+                                <div class="form-group">
+                                    {{ form_label(form.tendangnhap, 'Tên Đăng Nhập', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                        {{ form_widget(form.tendangnhap)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.matkhau, 'Mật Khẩu', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.matkhau)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.hoten, 'Họ Tên', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                        {{ form_widget(form.hoten)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.ngaysinh, 'Ngày Sinh', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.ngaysinh)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.gioitinh, 'Giới Tính', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                        {{ form_widget(form.gioitinh)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.quequan, 'Quê Quán', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.quequan)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.email)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.cmnd, 'CMND', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.cmnd)}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.tieusu, 'Tiểu Sử', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                        <span class="help-block">Các thông tin về tiểu sử của hội viên.</span>
+                                        {{ form_widget(form.tieusu)}}
+                                          
+                                    </div>
+                                </div>
+                                
+                               <div class="form-group">
+                                    {{ form_label(form.matoasoan, 'Tòa Soạn', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10">
+                                         {{ form_widget(form.matoasoan)}}
+                                    </div>
+                                </div> 
+                                <div style="color: white;">a</div>
+                                <div class="form-group">
+                                    {{ form_label(form.kichhoat, 'Kích Hoạt', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
+                                    <div class="col-lg-10" >
+                                         {{ form_widget(form.kichhoat)}}
+                                    </div>
+                                </div>  
+                              
+                                
+
+                                <div class="form-group">
+                                    <div class="col-lg-10"></div>
+                                    <div class="col-lg-2">
+                                        {{form_widget(form.create)}}
+                                    </div>
+                                </div>
+                        </fieldset>
+                        {{ form_end(form) }}
+                 
+            </div>
+        </div>
+    </div>
+ 	
+    <script src="{{ asset('bundles/projecthoinhabao/js/jquery-1.11.2.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/js/bootstrap.min.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/material/js/ripples.min.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/material/js/material.min.js') }}"></script>
+
+</body>
+
+</html>

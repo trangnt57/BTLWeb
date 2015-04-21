@@ -33,48 +33,68 @@ class HoivienController extends Controller
             'nữ' => 'Nữ'
         );
        
-        $toasoan = array(
-            '30000' => 'Hoa Học Trò',
-            '30001' => 'Dân Trí'
-        );
+        $kichhoat = array('1' => 'Kích hoạt',
+            '0' => 'Không kích hoạt' );
         $form = $this->createFormBuilder($hoivien)
-            ->add('tendangnhap', 'text')
-            ->add('matkhau','password')
-            ->add('hoten','text')
+            ->add('tendangnhap', 'text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Tên Đăng Nhập'),
+            ))
+            ->add('matkhau','password', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Mật Khẩu'),
+            ))
+            ->add('hoten','text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Họ Tên'),
+            ))
             ->add('ngaysinh','date', array(
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
+                'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd'),
             ))
             ->add('gioitinh', 'choice', array(
                 'choices' => $gioitinh,
                 'multiple' => false,
-                
-                'data'  => 'nam'
+                'expanded' => true,
+                'data'  => 'nam',
+                'attr' => array('class' => 'form-control'),
             ))
             //->add('anhdaidien','file')
-            ->add('quequan','text')
-            ->add('email','email')
-            ->add('cmnd','text')
-            ->add('tieusu', 'textarea')
+            ->add('quequan','text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Quê Quán'),
+            ))
+            ->add('email','email',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Email'),
+            ))
+            ->add('cmnd','text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'CMND'),
+            ))
+            ->add('tieusu', 'textarea',array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3'),
+            ))
             ->add('matoasoan', 'entity', array(
                 'class' => 'ProjectHoinhabaoBundle:Toasoan',
                 'property' => 'tentoasoan',
+                'multiple' => false,
+                'attr' => array('class' => 'form-control'),
             ))
             ->add('kichhoat', 'choice', array(
-                'choices' => array(
-                    '1' => 'Kích hoạt',
-                    '0' => 'Không kích hoạt'
-                ),
-                'placeholder' => 'chọn trạng thái'
+                'choices' => $kichhoat,
+                'multiple'=> false,
+                'attr' => array('class' => 'form-control '),
             ))
-            ->add('tạo','submit')
+            ->add('create','submit',array(
+                'label' => 'Tạo',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input', 'id' => 'addhoivien-button'),
+
+            ))
             ->getForm();
         $form->handleRequest($request);
         if($form->isValid()){
             $em = $this->getDoctrine()->getManager();
             $em->persist($hoivien);
             $em->flush();
-            return new Response('Hội viên được thêm thành công');
+            return new Response ("<p>Hôi viên được thêm thành công<p>
+                                <a>Trang chủ</a>");
+           
         }
         $build['form'] = $form->createView();
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_add.html.twig', $build);
@@ -87,46 +107,57 @@ class HoivienController extends Controller
                 'Không tìm thấy hội viên ' . $tendangnhap
             );
         }
-        $gioitinh = array(
-            'nam' => 'Nam',
-            'nữ' => 'Nữ'
-        );
-       
-        $toasoan = array(
-            '30000' => 'Hoa Học Trò',
-            '30001' => 'Dân Trí'
-        );
         $form = $this->createFormBuilder($hoivien)
-            ->add('tendangnhap', 'text')
-            ->add('matkhau','password')
-            ->add('hoten','text')
+            ->add('tendangnhap', 'text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Tên Đăng Nhập'),
+            ))
+            ->add('matkhau','password', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Mật Khẩu'),
+            ))
+            ->add('hoten','text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Họ Tên'),
+            ))
             ->add('ngaysinh','date', array(
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
+                'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd'),
             ))
             ->add('gioitinh', 'choice', array(
                 'choices' => $gioitinh,
                 'multiple' => false,
-                
-                'data'  => 'nam'
+                'expanded' => true,
+                'data'  => 'nam',
+                'attr' => array('class' => 'form-control'),
             ))
             //->add('anhdaidien','file')
-            ->add('quequan','text')
-            ->add('email','email')
-            ->add('cmnd','text')
-            ->add('tieusu', 'textarea')
+            ->add('quequan','text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Quê Quán'),
+            ))
+            ->add('email','email',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Email'),
+            ))
+            ->add('cmnd','text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'CMND'),
+            ))
+            ->add('tieusu', 'textarea',array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3'),
+            ))
             ->add('matoasoan', 'entity', array(
                 'class' => 'ProjectHoinhabaoBundle:Toasoan',
                 'property' => 'tentoasoan',
+                'multiple' => false,
+                'attr' => array('class' => 'form-control'),
             ))
             ->add('kichhoat', 'choice', array(
-                'choices' => array(
-                    '1' => 'Kích hoạt',
-                    '0' => 'Không kích hoạt'
-                ),
-                'placeholder' => 'chọn trạng thái'
+                'choices' => $kichhoat,
+                'multiple'=> false,
+                'attr' => array('class' => 'form-control '),
             ))
-            ->add('tạo','submit')
+            ->add('create','submit',array(
+                'label' => 'Tạo',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input', 'id' => 'addhoivien-button'),
+
+            ))
             ->getForm();
         $form->handleRequest($request);
         if($form->isValid()){

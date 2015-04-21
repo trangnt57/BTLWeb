@@ -18,11 +18,9 @@ class TacphamController extends Controller
     	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
     	$mahoivien = $hoivien->getMahv();
         $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findByMahv(''.$mahoivien.'');
-        $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMahv(''.$mahoivien.'');
         
         $build['tendangnhap'] = $tendangnhap;
         $build['tacpham'] = $tacpham;
-        $build['giaithuong'] = $giaithuong;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_show_all.html.twig', $build);
     
     }
@@ -31,16 +29,31 @@ class TacphamController extends Controller
     	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
     	$tacpham = new Tacpham();
     	$form = $this->createFormBuilder($tacpham)
-    		->add('tentacpham', 'text')
-    		->add('mota', 'textarea')
-    		->add('ngaysangtac','date')
+    		->add('tentacpham', 'text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Tên Tác Phẩm'),
+            ))
+    		->add('mota', 'textarea', array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3')
+            ))
+    		->add('ngaysangtac','date',array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd')
+                ))
     		->add('matheloai', 'entity', array(
                 'class' => 'ProjectHoinhabaoBundle:Theloai',
                 'property' => 'tentheloai',
+                'multiple' => false,
+                'attr' => array('class' => 'form-control'),
             ))
            
-            ->add('lienket', 'text')
-            ->add('Thêm', 'submit')
+            ->add('lienket', 'text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Đường link đến tác phẩm của bạn'),
+            ))
+            ->add('add', 'submit', array(
+                'label' => 'Thêm',
+                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+            ))
             ->getForm();
         $tacpham->setMahv($hoivien);
         $form->handleRequest($request);
@@ -52,6 +65,7 @@ class TacphamController extends Controller
         }
 
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $tendangnhap;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
@@ -59,20 +73,35 @@ class TacphamController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
     	if(!$tacpham){
-    		throw $this->createNotFoundException('Không tìm thấy tác phẩm với ma:' . $matacpham);
+    		throw $this->createNotFoundException('Không tìm thấy tác phẩm với mã:' . $matacpham);
     	}
 
     	$form = $this->createFormBuilder($tacpham)
-    		->add('tentacpham', 'text')
-    		->add('mota', 'textarea')
-    		->add('ngaysangtac','date')
-    		->add('matheloai', 'entity', array(
+            ->add('tentacpham', 'text', array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Tên Tác Phẩm'),
+            ))
+            ->add('mota', 'textarea', array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3')
+            ))
+            ->add('ngaysangtac','date',array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd')
+                ))
+            ->add('matheloai', 'entity', array(
                 'class' => 'ProjectHoinhabaoBundle:Theloai',
                 'property' => 'tentheloai',
+                'multiple' => false,
+                'attr' => array('class' => 'form-control'),
             ))
            
-            ->add('lienket', 'text')
-            ->add('Thêm', 'submit')
+            ->add('lienket', 'text',array(
+                'attr' => array('class' => 'form-control', 'placeholder' => 'Đường link đến tác phẩm của bạn'),
+            ))
+            ->add('add', 'submit', array(
+                'label' => 'Thêm',
+                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+            ))
             ->getForm();
         $form->handleRequest($request);
         if($form->isValid()){
