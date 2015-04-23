@@ -22,7 +22,7 @@ class GiaithuongController extends Controller
         
         $build['tendangnhap'] = $tendangnhap;
         $build['giaithuong'] = $giaithuong;
-        return $this->render('ProjectHoinhabaoBundle:Tacpham:giaithuong_show_all.html.twig', $build);
+        return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_show_all.html.twig', $build);
     
     }
     public function addAction($tendangnhap, Request $request){
@@ -45,8 +45,8 @@ class GiaithuongController extends Controller
             ))
            
             ->add('add', 'submit',array(
-                'label' => 'Thêm',
-                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+                'label' => 'Lưu',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input'),
 
             ))
             ->getForm();
@@ -64,7 +64,7 @@ class GiaithuongController extends Controller
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
-   public function editAction($magiaithuong, Request $request){
+   public function editAction($tendangnhap, $magiaithuong, Request $request){
         $em = $this->getDoctrine()->getManager();
         $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');
         if(!$giaithuong){
@@ -88,8 +88,8 @@ class GiaithuongController extends Controller
             ))
            
             ->add('add', 'submit',array(
-                'label' => 'Thêm',
-                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+                'label' => 'Lưu',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input'),
 
             ))
             ->getForm();
@@ -102,6 +102,7 @@ class GiaithuongController extends Controller
         }
 
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $tendangnhap;
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 

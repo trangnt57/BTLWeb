@@ -122,12 +122,19 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
                                     <a href=\"";
         // line 77
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Tác phẩm & giải thưởng</a>
+        echo "\"> Danh sách tác phẩm</a>
+                                </li>
+                                <li>
+                                    <i class=\"mdi-action-list\"></i>
+                                    <a href=\"";
+        // line 81
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
+        echo "\"> Danh sách giải thưởng</a>
                                 </li>
                                 <li>
                                     <i class=\"mdi-image-filter-none\"></i>
                                     <a href=\"";
-        // line 81
+        // line 85
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\">Thông tin cá nhân</a>
                                 </li>
@@ -139,88 +146,103 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
                     
                    
                         ";
-        // line 90
+        // line 94
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start');
         echo "
     \t\t\t\t\t<fieldset>
-                            <legend>Thêm Tác phẩm</legend>
+                            ";
+        // line 96
+        $context["currentPath"] = $this->env->getExtension('routing')->getPath($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route"), "method"), $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request", array()), "attributes", array()), "get", array(0 => "_route_params"), "method"));
+        // line 97
+        echo "                            ";
+        if (((isset($context["currentPath"]) ? $context["currentPath"] : $this->getContext($context, "currentPath")) == $this->env->getExtension('routing')->getPath("project_tacpham_add", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))))) {
+            // line 98
+            echo "                                <legend>Thêm Tác Phẩm</legend>
+                            ";
+        } else {
+            // line 100
+            echo "                                <legend>Sửa Thông Tin Tác Phẩm</legend>
+                            ";
+        }
+        // line 102
+        echo "                            
                                 
-                                <div class=\"form-group\">
-                                    ";
-        // line 95
+                            <div class=\"form-group\">
+                                ";
+        // line 105
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tentacpham", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Tên Tác Phẩm"));
         echo "
-                                    <div class=\"col-lg-10\">
-                                        ";
-        // line 97
+                                <div class=\"col-lg-10\">
+                                    ";
+        // line 107
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "tentacpham", array()), 'widget');
         echo "
-                                    </div>
                                 </div>
-                                <div class=\"form-group\">
-                                    ";
-        // line 101
+                            </div>
+                            <div class=\"form-group\">
+                                ";
+        // line 111
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "mota", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Mô Tả"));
         echo "
-                                    <div class=\"col-lg-10\">
-                                         <span class=\"help-block\">Mô tả tổng quan về tác phẩm của bạn.</span>
-                                        ";
-        // line 104
+                                <div class=\"col-lg-10\">
+                                     <span class=\"help-block\">Mô tả tổng quan về tác phẩm của bạn.</span>
+                                    ";
+        // line 114
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "mota", array()), 'widget');
         echo "
-                                    </div>
                                 </div>
-                                
-                                <div class=\"form-group\">
-                                    ";
-        // line 109
+                            </div>
+                            
+                            <div class=\"form-group\">
+                                ";
+        // line 119
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "ngaysangtac", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Ngày Sáng Tác"));
         echo "
-                                    <div class=\"col-lg-10\">
-                                         ";
-        // line 111
+                                <div class=\"col-lg-10\">
+                                     ";
+        // line 121
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "ngaysangtac", array()), 'widget');
         echo "
-                                    </div>
                                 </div>
-                                       
-                                <div class=\"form-group\">
-                                    ";
-        // line 116
+                            </div>
+                                   
+                            <div class=\"form-group\">
+                                ";
+        // line 126
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "matheloai", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Thể Loại"));
         echo "
-                                    <div class=\"col-lg-10\">
-                                         ";
-        // line 118
+                                <div class=\"col-lg-10\">
+                                     ";
+        // line 128
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "matheloai", array()), 'widget');
         echo "
-                                    </div>
-                                </div> 
-                                <div style=\"color:white\">a</div>
-                                <div class=\"form-group\">
-                                    ";
-        // line 123
+                                </div>
+                            </div> 
+                            <div style=\"color:white\">a</div>
+                            <div class=\"form-group\">
+                                ";
+        // line 133
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lienket", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Liên Kết"));
         echo "
-                                    <div class=\"col-lg-10\">
-                                         ";
-        // line 125
+                                <div class=\"col-lg-10\">
+                                     ";
+        // line 135
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "lienket", array()), 'widget');
         echo "
-                                    </div>
-                                </div> 
-                                <div class=\"form-group\">
-                                    <div class=\"col-lg-10\"></div>
-                                    <div class=\"col-lg-2\">
-                                        ";
-        // line 131
+                                </div>
+                            </div> 
+                            <div class=\"form-group\">
+                                <div class=\"col-lg-10\"></div>
+                                <div class=\"col-lg-2\">
+                                    ";
+        // line 141
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "add", array()), 'widget');
         echo "
-                                    </div>
                                 </div>
+                            </div>
                         </fieldset>
                         ";
-        // line 135
+        // line 145
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
                  
@@ -229,19 +251,19 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
     </div>
  \t
     <script src=\"";
-        // line 141
+        // line 151
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 142
+        // line 152
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 143
+        // line 153
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 144
+        // line 154
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
 
@@ -263,6 +285,6 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
 
     public function getDebugInfo()
     {
-        return array (  245 => 144,  241 => 143,  237 => 142,  233 => 141,  224 => 135,  217 => 131,  208 => 125,  203 => 123,  195 => 118,  190 => 116,  182 => 111,  177 => 109,  169 => 104,  163 => 101,  156 => 97,  151 => 95,  143 => 90,  131 => 81,  124 => 77,  117 => 73,  110 => 69,  85 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  267 => 154,  263 => 153,  259 => 152,  255 => 151,  246 => 145,  239 => 141,  230 => 135,  225 => 133,  217 => 128,  212 => 126,  204 => 121,  199 => 119,  191 => 114,  185 => 111,  178 => 107,  173 => 105,  168 => 102,  164 => 100,  160 => 98,  157 => 97,  155 => 96,  150 => 94,  138 => 85,  131 => 81,  124 => 77,  117 => 73,  110 => 69,  85 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

@@ -85,7 +85,13 @@
                    
                         {{ form_start(form) }}
     					<fieldset>
-                            <legend>Thêm Hội Viên</legend>
+                            {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                            {% if currentPath == path('project_hoinhabao_add')  %}
+                                <legend>Thêm Hội Viên</legend>
+                            {% else %}
+                                <legend>Sửa Thông Tin Hội Viên</legend>
+                            {% endif %}
+                            
                                 
                                 <div class="form-group">
                                     {{ form_label(form.tendangnhap, 'Tên Đăng Nhập', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}

@@ -73,7 +73,7 @@
                                 </li>
                                 <li>
                                     <i class="mdi-image-filter-none"></i>
-                                    <a>Báo cáo</a>
+                                    <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
                                 </li>
                             </ul>
                         </div>
@@ -96,8 +96,7 @@
                                 <th>Mã Hội Viên</th>
                                 <th>Tên Đăng Nhập</th>
                                 <th>Họ Tên</th>
-                                <th>Ngày Sinh</th>
-                                <th>Giới Tính</th>
+                               
                                 <th>Email</th>
                                 <th>CMND</th>
                                 <th>
@@ -108,8 +107,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                           
 
                             {% for eachhoivien in hoivien %}
                                 <tr>
@@ -122,12 +119,8 @@
                                     <td>
                                         {{eachhoivien.HoTen}}
                                     </td>
-                                    <td>
-                                        {{eachhoivien.NgaySinh | date('Y-m-d')}}
-                                    </td>
-                                    <td>
-                                        {{eachhoivien.GioiTinh}}
-                                    </td>
+                                    
+                                    
                                     <td>
                                         {{eachhoivien.Email}}
                                     </td>

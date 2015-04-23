@@ -115,7 +115,10 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                 </li>
                                 <li>
                                     <i class=\"mdi-image-filter-none\"></i>
-                                    <a>Báo cáo</a>
+                                    <a href=\"";
+        // line 76
+        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_report");
+        echo "\">Báo cáo</a>
                                 </li>
                             </ul>
                         </div>
@@ -144,8 +147,7 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                 <th>Mã Hội Viên</th>
                                 <th>Tên Đăng Nhập</th>
                                 <th>Họ Tên</th>
-                                <th>Ngày Sinh</th>
-                                <th>Giới Tính</th>
+                               
                                 <th>Email</th>
                                 <th>CMND</th>
                                 <th>
@@ -157,24 +159,22 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                         </thead>
                         <tbody>
 
-                           
-
                             ";
-        // line 114
+        // line 111
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["hoivien"]) ? $context["hoivien"] : $this->getContext($context, "hoivien")));
         foreach ($context['_seq'] as $context["_key"] => $context["eachhoivien"]) {
-            // line 115
+            // line 112
             echo "                                <tr>
                                     <td>
                                         ";
-            // line 117
+            // line 114
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "MaHV", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         <a href=\"";
-            // line 120
+            // line 117
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()), "html", null, true);
@@ -182,31 +182,21 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                     </td>
                                     <td>
                                         ";
-            // line 123
+            // line 120
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "HoTen", array()), "html", null, true);
             echo "
                                     </td>
+                                    
+                                    
                                     <td>
                                         ";
-            // line 126
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["eachhoivien"], "NgaySinh", array()), "Y-m-d"), "html", null, true);
-            echo "
-                                    </td>
-                                    <td>
-                                        ";
-            // line 129
-            echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "GioiTinh", array()), "html", null, true);
-            echo "
-                                    </td>
-                                    <td>
-                                        ";
-            // line 132
+            // line 125
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Email", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         ";
-            // line 135
+            // line 128
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "CMND", array()), "html", null, true);
             echo "
                                     </td>
@@ -215,7 +205,7 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                         <div class=\"checkbox\">
                                             <label>
                                                 <input type='checkbox' name='xoa[]' value='";
-            // line 141
+            // line 134
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Mahv", array()), "html", null, true);
             echo "'>
                                             </label>
@@ -228,7 +218,7 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['eachhoivien'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 148
+        // line 141
         echo "                            
                         </tbody>
                         </form>
@@ -241,23 +231,23 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
     </div>
     
     <script src=\"";
-        // line 159
+        // line 152
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 160
+        // line 153
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 161
+        // line 154
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 162
+        // line 155
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 163
+        // line 156
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -292,6 +282,6 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
 
     public function getDebugInfo()
     {
-        return array (  261 => 163,  257 => 162,  253 => 161,  249 => 160,  245 => 159,  232 => 148,  219 => 141,  210 => 135,  204 => 132,  198 => 129,  192 => 126,  186 => 123,  178 => 120,  172 => 117,  168 => 115,  164 => 114,  140 => 93,  132 => 88,  113 => 72,  106 => 68,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  251 => 156,  247 => 155,  243 => 154,  239 => 153,  235 => 152,  222 => 141,  209 => 134,  200 => 128,  194 => 125,  186 => 120,  178 => 117,  172 => 114,  168 => 112,  164 => 111,  143 => 93,  135 => 88,  120 => 76,  113 => 72,  106 => 68,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

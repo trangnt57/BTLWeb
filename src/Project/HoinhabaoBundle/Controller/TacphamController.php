@@ -12,6 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TacphamController extends Controller
 {
+    public function showAction($matacpham)
+    {
+        $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
+        if(!$tacpham){
+            throw $this->createNotFoundException('Khong tim thay tac pham ' . $matacpham);
+        }
+        $build['tacpham_item'] = $tacpham;
+        return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_show.html.twig', $build);
+    }
+
     public function indexAction($tendangnhap)
     {
     	
@@ -51,8 +61,8 @@ class TacphamController extends Controller
                 'attr' => array('class' => 'form-control', 'placeholder' => 'Đường link đến tác phẩm của bạn'),
             ))
             ->add('add', 'submit', array(
-                'label' => 'Thêm',
-                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+                'label' => 'Lưu',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input'),
             ))
             ->getForm();
         $tacpham->setMahv($hoivien);
@@ -65,11 +75,12 @@ class TacphamController extends Controller
         }
 
         $build['form'] = $form->createView();
+
         $build['tendangnhap'] = $tendangnhap;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
-    public function editAction($matacpham, Request $request){
+    public function editAction($tendangnhap, $matacpham, Request $request){
     	$em = $this->getDoctrine()->getManager();
     	$tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
     	if(!$tacpham){
@@ -99,8 +110,8 @@ class TacphamController extends Controller
                 'attr' => array('class' => 'form-control', 'placeholder' => 'Đường link đến tác phẩm của bạn'),
             ))
             ->add('add', 'submit', array(
-                'label' => 'Thêm',
-                'attr' => array('class' => 'btn btn-primary mdi-av-playlist-add'),
+                'label' => 'Lưu',
+                'attr' => array('class' => 'btn btn-primary mdi-action-input'),
             ))
             ->getForm();
         $form->handleRequest($request);
@@ -110,6 +121,7 @@ class TacphamController extends Controller
         }
 
         $build['form'] = $form->createView();
+         $build['tendangnhap'] = $tendangnhap;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 

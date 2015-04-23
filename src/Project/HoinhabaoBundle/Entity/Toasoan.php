@@ -95,4 +95,8 @@ class Toasoan
     {
         return $this->matinhthanh;
     }
+
+    public function __toString(){
+        return $this->tentoasoan;
+    }
 }

@@ -6,6 +6,10 @@ project_hoinhabao_add:
     path:     /hoivien/add
     defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:add }
 
+project_hoinhabao_report:
+    path:     /hoivien/report
+    defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:report }
+
 project_giaithuong_multidelete:
     path:     /hoivien/{tendangnhap}/giaithuong/delete
     defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:multidelete }
@@ -39,6 +43,19 @@ project_tacpham_add:
     path:     /hoivien/{tendangnhap}/addtacpham
     defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:add }
 
+project_giaithuong_add:
+    path:     /hoivien/{tendangnhap}/addgiaithuong
+    defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:add }
+
+project_giaithuong:
+    path:     /hoivien/{tendangnhap}/giaithuong
+    defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:index }
+
+
+project_tacpham_show:
+    path:     /hoivien/{tendangnhap}/{matacpham}
+    defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:show }
+
 project_tacpham_edit:
     path:     /hoivien/{tendangnhap}/edit/{matacpham}
     defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:edit }
@@ -47,13 +64,8 @@ project_tacpham_delete:
     path:     /hoivien/{tendangnhap}/delete/{matacpham}
     defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:delete }
 
-project_giaithuong:
-    path:     /hoivien/{tendangnhap}/giaithuong
-    defaults: { _controller: ProjectHoinhabaoBundle:Tacpham:index }
 
-project_giaithuong_add:
-    path:     /hoivien/{tendangnhap}/addgiaithuong
-    defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:add }
+
 
 project_giaithuong_edit:
     path:     /hoivien/{tendangnhap}/{magiaithuong}/edit

@@ -142,6 +142,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::addAction',  '_route' => 'project_hoinhabao_add',);
             }
 
+            // project_hoinhabao_report
+            if ($pathinfo === '/hoivien/report') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::reportAction',  '_route' => 'project_hoinhabao_report',);
+            }
+
             // project_giaithuong_multidelete
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/giaithuong/delete$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_multidelete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::multideleteAction',));
@@ -182,6 +187,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::addAction',));
             }
 
+            // project_giaithuong_add
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/addgiaithuong$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::addAction',));
+            }
+
+            // project_giaithuong
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/giaithuong$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::indexAction',));
+            }
+
+            // project_tacpham_show
+            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/(?P<matacpham>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_show')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::showAction',));
+            }
+
             // project_tacpham_edit
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/edit/(?P<matacpham>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_edit')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::editAction',));
@@ -190,16 +210,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // project_tacpham_delete
             if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/delete/(?P<matacpham>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_tacpham_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::deleteAction',));
-            }
-
-            // project_giaithuong
-            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/giaithuong$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::indexAction',));
-            }
-
-            // project_giaithuong_add
-            if (preg_match('#^/hoivien/(?P<tendangnhap>[^/]++)/addgiaithuong$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_add')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::addAction',));
             }
 
             // project_giaithuong_edit

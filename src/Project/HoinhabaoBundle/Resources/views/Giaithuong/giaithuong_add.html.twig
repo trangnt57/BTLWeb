@@ -6,7 +6,7 @@
    	<link href="{{ asset('bundles/projecthoinhabao/material/css/ripples.min.css') }}" rel="stylesheet"> 
     <link href="{{ asset('bundles/projecthoinhabao/material/css/material-wfont.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/projecthoinhabao/css/style.css') }}" rel="stylesheet">
-    <title>Thêm giải thưởng</title>
+    <title>Giải thưởng</title>
     <style type="text/css">
         #addhoivien-button{
             font-size: 18px;
@@ -74,7 +74,11 @@
                                 </li>
                                 <li>
                                     <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Tác phẩm & giải thưởng</a>
+                                    <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm </a>
+                                </li>
+                                <li>
+                                    <i class="mdi-action-list"></i>
+                                    <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng</a>
                                 </li>
                                 <li>
                                     <i class="mdi-image-filter-none"></i>
@@ -89,8 +93,12 @@
                    
                         {{ form_start(form) }}
     					<fieldset>
-                            <legend>Thêm Giải Thưởng</legend>
-                                
+                            {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+                            {% if currentPath == path('project_giaithuong_add',{'tendangnhap':tendangnhap})  %}
+                                <legend>Thêm Giải Thưởng</legend>
+                            {% else %}
+                                <legend>Sửa Thông Tin Giải Thưởng</legend>
+                            {% endif %}
                                 <div class="form-group">
                                     {{ form_label(form.tengiaithuong, 'Tên Giải Thưởng', {'label_attr': {'class': 'col-lg-2 control-label'}}) }}
                                     <div class="col-lg-10">

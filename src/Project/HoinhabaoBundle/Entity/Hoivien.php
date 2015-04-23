@@ -111,8 +111,7 @@ class Hoivien
      */
     private $matoasoan;
 
-
-
+    
     /**
      * Set tendangnhap
      *
@@ -399,7 +398,9 @@ class Hoivien
         return $this->matoasoan;
     }
 
-
+     public function __toString(){
+        return $this->tendangnhap;
+    }
 
 
    

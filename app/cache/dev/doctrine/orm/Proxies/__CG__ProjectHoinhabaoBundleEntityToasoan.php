@@ -232,4 +232,15 @@ class Toasoan extends \Project\HoinhabaoBundle\Entity\Toasoan implements \Doctri
         return parent::getMatinhthanh();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
+
+        return parent::__toString();
+    }
+
 }

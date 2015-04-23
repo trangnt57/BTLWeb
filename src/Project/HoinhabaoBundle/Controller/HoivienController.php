@@ -1,11 +1,17 @@
 <?php
 namespace Project\HoinhabaoBundle\Controller;
 use Project\HoinhabaoBundle\Entity\Hoivien;
+use Project\HoinhabaoBundle\Entity\Tacpham;
+use Project\HoinhabaoBundle\Entity\Giaithuong;
+use Project\HoinhabaoBundle\Entity\Theloai;
+use Project\HoinhabaoBundle\Entity\Toasoan;
+use Project\HoinhabaoBundle\Entity\Tinhthanh;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 class HoivienController extends Controller
 {
     public function showAction($tendangnhap)
@@ -82,7 +88,7 @@ class HoivienController extends Controller
                 'attr' => array('class' => 'form-control '),
             ))
             ->add('create','submit',array(
-                'label' => 'Tạo',
+                'label' => 'Lưu',
                 'attr' => array('class' => 'btn btn-primary mdi-action-input', 'id' => 'addhoivien-button'),
 
             ))
@@ -100,6 +106,12 @@ class HoivienController extends Controller
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_add.html.twig', $build);
     }
     public function editAction($tendangnhap, Request $request){
+        $gioitinh = array(
+            'nam' => 'Nam',
+            'nữ' => 'Nữ'
+        );
+        $kichhoat = array('1' => 'Kích hoạt',
+            '0' => 'Không kích hoạt' );
         $em = $this->getDoctrine()->getManager();
         $hoivien = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
         if(!$hoivien){
@@ -154,7 +166,7 @@ class HoivienController extends Controller
                 'attr' => array('class' => 'form-control '),
             ))
             ->add('create','submit',array(
-                'label' => 'Tạo',
+                'label' => 'Lưu',
                 'attr' => array('class' => 'btn btn-primary mdi-action-input', 'id' => 'addhoivien-button'),
 
             ))
@@ -221,6 +233,32 @@ class HoivienController extends Controller
             return new Response('Xóa thành công');
            
         }
+    }
+
+    public function reportAction(){
+        
+        //thong ke tong so luong hoi vien, giai thuong, tac pham
+        $em = $em = $this->getDoctrine()->getManager();
+        $hoivien = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findAll();
+        $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findAll();
+        $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findAll();
+        $build['hoivien'] = $hoivien;
+        $build['tacpham'] = $tacpham;
+        $build['giaithuong'] = $giaithuong;
+        $bieudo;
+        $i = 0;
+        foreach ($hoivien as $hv) {
+            $mahoivien = $hv->getMahv();
+            $tp = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findByMahv(''.$mahoivien.'');
+            $gt = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMahv(''.$mahoivien.'');
+            $bd['tendangnhap'] = $hv->getTendangnhap();
+            $bd['tacpham'] = $tp;
+            $bd['giaithuong'] = $gt;
+            $bieudo[$i] = $bd;
+            $i++;
+        }
+        $build['bieudo'] = $bieudo;
+        return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_report.html.twig', $build);
     }
 }
 ?>

@@ -81,7 +81,7 @@
                                 </li>
                                 <li>
                                     <i class="mdi-image-filter-none"></i>
-                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Thông tin cá nhân</a>
+                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Thông tin hội viên</a>
                                 </li>
                             </ul>
                         </div>
@@ -117,7 +117,7 @@
 
                                {% for tp in tacpham %}
                                     <tr>
-                                        <td>{{tp.MaTacPham}}</td>
+                                        <td><a href="{{path('project_tacpham_show', {'tendangnhap':tendangnhap, 'matacpham':tp.MaTacPham})}}">{{tp.MaTacPham}}</a></td>
                                         <td>{{tp.TenTacPham}}</td>
                                         <td>{{tp.MaTheLoai}}</td>
                                         <td><a href='{{tp.LienKet}}'>{{tp.LienKet}}</a></td>

@@ -452,4 +452,15 @@ class Hoivien extends \Project\HoinhabaoBundle\Entity\Hoivien implements \Doctri
         return parent::getMatoasoan();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
+
+        return parent::__toString();
+    }
+
 }

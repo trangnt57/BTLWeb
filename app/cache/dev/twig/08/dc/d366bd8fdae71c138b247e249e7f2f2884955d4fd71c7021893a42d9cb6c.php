@@ -138,7 +138,7 @@ class __TwigTemplate_08dcd366bd8fdae71c138b247e249e7f2f2884955d4fd71c7021893a42d
                                     <a href=\"";
         // line 84
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Thông tin cá nhân</a>
+        echo "\">Thông tin hội viên</a>
                                 </li>
                             </ul>
                         </div>
@@ -185,10 +185,12 @@ class __TwigTemplate_08dcd366bd8fdae71c138b247e249e7f2f2884955d4fd71c7021893a42d
         foreach ($context['_seq'] as $context["_key"] => $context["tp"]) {
             // line 119
             echo "                                    <tr>
-                                        <td>";
+                                        <td><a href=\"";
             // line 120
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "matacpham" => $this->getAttribute($context["tp"], "MaTacPham", array()))), "html", null, true);
+            echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tp"], "MaTacPham", array()), "html", null, true);
-            echo "</td>
+            echo "</a></td>
                                         <td>";
             // line 121
             echo twig_escape_filter($this->env, $this->getAttribute($context["tp"], "TenTacPham", array()), "html", null, true);
@@ -291,6 +293,6 @@ class __TwigTemplate_08dcd366bd8fdae71c138b247e249e7f2f2884955d4fd71c7021893a42d
 
     public function getDebugInfo()
     {
-        return array (  252 => 148,  248 => 147,  244 => 146,  240 => 145,  236 => 144,  223 => 133,  211 => 127,  202 => 123,  198 => 122,  194 => 121,  190 => 120,  187 => 119,  183 => 118,  164 => 102,  156 => 97,  140 => 84,  133 => 80,  126 => 76,  119 => 72,  112 => 68,  87 => 46,  78 => 40,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  254 => 148,  250 => 147,  246 => 146,  242 => 145,  238 => 144,  225 => 133,  213 => 127,  204 => 123,  200 => 122,  196 => 121,  190 => 120,  187 => 119,  183 => 118,  164 => 102,  156 => 97,  140 => 84,  133 => 80,  126 => 76,  119 => 72,  112 => 68,  87 => 46,  78 => 40,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }
