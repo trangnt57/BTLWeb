@@ -2629,6 +2629,7 @@
       <argument type="service" id="security.authentication.trust_resolver" on-invalid="null"/>
       <argument type="service" id="security.role_hierarchy" on-invalid="null"/>
     </service>
+    <service id="project_hoinhabao.template" class="Project\HoinhabaoBundle\Controller\TemplateController"/>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>

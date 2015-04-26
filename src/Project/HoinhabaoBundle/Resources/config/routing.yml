@@ -75,3 +75,7 @@ project_giaithuong_delete:
     path:     /hoivien/{tendangnhap}/{magiaithuong}/delete
     defaults: { _controller: ProjectHoinhabaoBundle:Giaithuong:delete }
 
+project_template:
+    path: /hoivien
+    defaults: { _controller: ProjectHoinhabaoBundle:Template:change }
+

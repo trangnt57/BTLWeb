@@ -145,6 +145,7 @@ class appDevDebugProjectContainer extends Container
             'monolog.logger.translation' => 'getMonolog_Logger_TranslationService',
             'profiler' => 'getProfilerService',
             'profiler_listener' => 'getProfilerListenerService',
+            'project_hoinhabao.template' => 'getProjectHoinhabao_TemplateService',
             'property_accessor' => 'getPropertyAccessorService',
             'request' => 'getRequestService',
             'request_stack' => 'getRequestStackService',
@@ -1819,6 +1820,19 @@ class appDevDebugProjectContainer extends Container
     protected function getProfilerListenerService()
     {
         return $this->services['profiler_listener'] = new \Symfony\Component\HttpKernel\EventListener\ProfilerListener($this->get('profiler'), NULL, false, false, $this->get('request_stack'));
+    }
+
+    /**
+     * Gets the 'project_hoinhabao.template' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return \Project\HoinhabaoBundle\Controller\TemplateController A Project\HoinhabaoBundle\Controller\TemplateController instance.
+     */
+    protected function getProjectHoinhabao_TemplateService()
+    {
+        return $this->services['project_hoinhabao.template'] = new \Project\HoinhabaoBundle\Controller\TemplateController();
     }
 
     /**

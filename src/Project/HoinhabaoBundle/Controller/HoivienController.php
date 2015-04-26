@@ -21,7 +21,18 @@ class HoivienController extends Controller
             throw $this->createNotFoundException('Khong tim thay hoi vien ' . $tendangnhap);
         }
         $build['hoivien_item'] = $hoivien;
-        return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show.html.twig', $build);
+        $changeTemplate = $this->get('project_hoinhabao.template');
+        $mau = $changeTemplate->getMau();
+        if(isset($_POST['templateForm'])){
+            $mau = $changeTemplate->change();
+        }
+        if($mau == 1)
+            return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show.html.twig', $build);
+        else if($mau == 2)
+            return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show2.html.twig', $build);
+        else 
+            return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show3.html.twig', $build);
+       
     }
     public function indexAction(){
         $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findAll();
@@ -30,7 +41,9 @@ class HoivienController extends Controller
             
         }
         $build['hoivien'] = $hoivien;
-            return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show_all.html.twig', $build);
+       
+        return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show_all.html.twig', $build);
+        
     }
     public function addAction(Request $request){
         $hoivien = new Hoivien();

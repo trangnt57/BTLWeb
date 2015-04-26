@@ -222,6 +222,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'project_giaithuong_delete')), array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::deleteAction',));
             }
 
+            // project_template
+            if ($pathinfo === '/hoivien') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TemplateController::changeAction',  '_route' => 'project_template',);
+            }
+
         }
 
         // homepage

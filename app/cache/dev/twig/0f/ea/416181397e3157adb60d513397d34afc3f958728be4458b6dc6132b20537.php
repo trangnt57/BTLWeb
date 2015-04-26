@@ -134,6 +134,15 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                                 </li>
                             </ul>
                         </div>
+                         <div class=\"toolbar\">
+                            <legend>Đổi giao diện</legend>
+                        </div>
+                        <div class=\"change-template\">
+                        ";
+        // line 93
+        $this->env->loadTemplate("ProjectHoinhabaoBundle:Template:change_template.html.twig")->display($context);
+        // line 94
+        echo "                    </div>
                     </div>
                 </div>
                 <div class=\"col-md-9 hoivien-info\" style=\"border-left: 2px solid red;\">
@@ -148,7 +157,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 102
+        // line 108
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "MaHV", array()), "html", null, true);
         echo "
                        </div>
@@ -163,7 +172,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 114
+        // line 120
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "TenDangNhap", array()), "html", null, true);
         echo "
                        </div>
@@ -177,7 +186,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 125
+        // line 131
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "HoTen", array()), "html", null, true);
         echo "
                        </div>
@@ -192,7 +201,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 137
+        // line 143
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "NgaySinh", array()), "Y-m-d"), "html", null, true);
         echo "
                        </div>
@@ -206,7 +215,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 148
+        // line 154
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "GioiTinh", array()), "html", null, true);
         echo "
                        </div>
@@ -221,7 +230,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 160
+        // line 166
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "QueQuan", array()), "html", null, true);
         echo "
                        </div>
@@ -236,7 +245,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 172
+        // line 178
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "Email", array()), "html", null, true);
         echo "
                        </div>
@@ -250,7 +259,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 183
+        // line 189
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "CMND", array()), "html", null, true);
         echo "
                        </div>
@@ -265,7 +274,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 195
+        // line 201
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "TieuSu", array()), "html", null, true);
         echo "
                        </div>
@@ -280,7 +289,7 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 207
+        // line 213
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "MaToaSoan", array()), "html", null, true);
         echo "
                        </div>
@@ -294,17 +303,17 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
                        </div>
                        <div class=\"col-md-9\">
                             ";
-        // line 218
+        // line 224
         if (($this->getAttribute((isset($context["hoivien_item"]) ? $context["hoivien_item"] : $this->getContext($context, "hoivien_item")), "kichhoat", array()) == 1)) {
-            // line 219
+            // line 225
             echo "                                Kích hoạt
                             ";
         } else {
-            // line 221
+            // line 227
             echo "                                Không kích hoạt
                             ";
         }
-        // line 223
+        // line 229
         echo "                       </div>
                     </div>
                 </div>
@@ -313,19 +322,19 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
     </div>
     
     <script src=\"";
-        // line 230
+        // line 236
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 231
+        // line 237
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 232
+        // line 238
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 233
+        // line 239
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
 </body>
@@ -354,6 +363,6 @@ class __TwigTemplate_0fea416181397e3157adb60d513397d34afc3f958728be4458b6dc6132b
 
     public function getDebugInfo()
     {
-        return array (  329 => 233,  325 => 232,  321 => 231,  317 => 230,  308 => 223,  304 => 221,  300 => 219,  298 => 218,  284 => 207,  269 => 195,  254 => 183,  240 => 172,  225 => 160,  210 => 148,  196 => 137,  181 => 125,  167 => 114,  152 => 102,  132 => 85,  125 => 81,  118 => 77,  111 => 73,  72 => 37,  42 => 10,  38 => 9,  34 => 8,  30 => 7,  26 => 6,  19 => 1,);
+        return array (  338 => 239,  334 => 238,  330 => 237,  326 => 236,  317 => 229,  313 => 227,  309 => 225,  307 => 224,  293 => 213,  278 => 201,  263 => 189,  249 => 178,  234 => 166,  219 => 154,  205 => 143,  190 => 131,  176 => 120,  161 => 108,  145 => 94,  143 => 93,  132 => 85,  125 => 81,  118 => 77,  111 => 73,  72 => 37,  42 => 10,  38 => 9,  34 => 8,  30 => 7,  26 => 6,  19 => 1,);
     }
 }
