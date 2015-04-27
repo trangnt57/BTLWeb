@@ -18,6 +18,7 @@
     <field name="cmnd" type="integer" column="CMND" nullable="false"/>
     <field name="tieusu" type="text" column="TieuSu" nullable="false"/>
     <field name="kichhoat" type="integer" column="KichHoat" nullable="false"/>
+    <field name="vaitro" type="string" column="VaiTro" length="8" nullable="true"/>
     <many-to-one field="matoasoan" target-entity="Toasoan">
       <join-columns>
         <join-column name="MaToaSoan" referenced-column-name="MaToaSoan"/>

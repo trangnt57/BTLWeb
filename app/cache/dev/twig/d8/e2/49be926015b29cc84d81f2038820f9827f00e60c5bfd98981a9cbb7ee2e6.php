@@ -71,8 +71,10 @@ class __TwigTemplate_d8e249be926015b29cc84d81f2038820f9827f00e60c5bfd98981a9cbb7
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">";
+                            <img class=\"row-avatar\" src=\"";
         // line 41
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">";
         echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
         echo "
                             <b class=\"caret\"></b>
@@ -83,10 +85,13 @@ class __TwigTemplate_d8e249be926015b29cc84d81f2038820f9827f00e60c5bfd98981a9cbb7
                         <li><a href=\"";
         // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Sửa thông tin cá nhân</a>
+        echo "\">Thông tin cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 50
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -195,28 +200,29 @@ class __TwigTemplate_d8e249be926015b29cc84d81f2038820f9827f00e60c5bfd98981a9cbb7
                                <div class=\"form-group\">
                                     ";
         // line 118
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "matacpham", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Tác phẩm"));
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "mota", array()), 'label', array("label_attr" => array("class" => "col-lg-2 control-label"), "label" => "Mô Tả"));
         echo "
                                     <div class=\"col-lg-10\">
-                                         ";
-        // line 120
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "matacpham", array()), 'widget');
+                                         <span class=\"help-block\">Mô tả tổng quan về giải thưởng của bạn.</span>
+                                        ";
+        // line 121
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "mota", array()), 'widget');
         echo "
                                     </div>
-                                </div> 
+                                </div>
                                
                                 <div class=\"form-group\">
                                     <div class=\"col-lg-10\"></div>
                                     <div class=\"col-lg-2\">
                                         ";
-        // line 127
+        // line 128
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "add", array()), 'widget');
         echo "
                                     </div>
                                 </div>
                         </fieldset>
                         ";
-        // line 131
+        // line 132
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
                  
@@ -225,19 +231,19 @@ class __TwigTemplate_d8e249be926015b29cc84d81f2038820f9827f00e60c5bfd98981a9cbb7
     </div>
  \t
     <script src=\"";
-        // line 137
+        // line 138
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 138
+        // line 139
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 139
+        // line 140
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 140
+        // line 141
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
 
@@ -259,6 +265,6 @@ class __TwigTemplate_d8e249be926015b29cc84d81f2038820f9827f00e60c5bfd98981a9cbb7
 
     public function getDebugInfo()
     {
-        return array (  241 => 140,  237 => 139,  233 => 138,  229 => 137,  220 => 131,  213 => 127,  203 => 120,  198 => 118,  190 => 113,  185 => 111,  176 => 105,  171 => 103,  168 => 102,  164 => 100,  160 => 98,  157 => 97,  155 => 96,  150 => 94,  138 => 85,  131 => 81,  124 => 77,  117 => 73,  110 => 69,  85 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  247 => 141,  243 => 140,  239 => 139,  235 => 138,  226 => 132,  219 => 128,  209 => 121,  203 => 118,  195 => 113,  190 => 111,  181 => 105,  176 => 103,  173 => 102,  169 => 100,  165 => 98,  162 => 97,  160 => 96,  155 => 94,  143 => 85,  136 => 81,  129 => 77,  122 => 73,  115 => 69,  93 => 50,  87 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

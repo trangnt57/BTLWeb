@@ -64,10 +64,10 @@ class Hoivien extends \Project\HoinhabaoBundle\Entity\Hoivien implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tendangnhap', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matkhau', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'hoten', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'ngaysinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'gioitinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'anhdaidien', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'quequan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'email', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'cmnd', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tieusu', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'kichhoat', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'mahv', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matoasoan');
+            return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tendangnhap', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matkhau', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'hoten', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'ngaysinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'gioitinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'anhdaidien', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'quequan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'email', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'cmnd', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tieusu', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'kichhoat', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'mahv', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matoasoan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'vaitro');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tendangnhap', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matkhau', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'hoten', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'ngaysinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'gioitinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'anhdaidien', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'quequan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'email', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'cmnd', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tieusu', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'kichhoat', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'mahv', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matoasoan');
+        return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tendangnhap', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matkhau', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'hoten', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'ngaysinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'gioitinh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'anhdaidien', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'quequan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'email', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'cmnd', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'tieusu', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'kichhoat', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'mahv', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'matoasoan', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Hoivien' . "\0" . 'vaitro');
     }
 
     /**
@@ -461,6 +461,28 @@ class Hoivien extends \Project\HoinhabaoBundle\Entity\Hoivien implements \Doctri
         $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
 
         return parent::__toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setVaitro($vaitro)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVaitro', array($vaitro));
+
+        return parent::setVaitro($vaitro);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getVaitro()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVaitro', array());
+
+        return parent::getVaitro();
     }
 
 }

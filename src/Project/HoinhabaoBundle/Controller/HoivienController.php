@@ -12,15 +12,29 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\HttpFoundation\Session\Session;
 class HoivienController extends Controller
-{
+{ 
     public function showAction($tendangnhap)
     {
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
+        $mahoivien = $hoivien->getMahv();
+        $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMahv(''.$mahoivien.'');
+        $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMahv(''.$mahoivien.'');
         if(!$hoivien){
             throw $this->createNotFoundException('Khong tim thay hoi vien ' . $tendangnhap);
         }
         $build['hoivien_item'] = $hoivien;
+        $build['giaithuong'] = $giaithuong;
+        $build['tacpham'] = $tacpham;
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         $changeTemplate = $this->get('project_hoinhabao.template');
         $mau = $changeTemplate->getMau();
         if(isset($_POST['templateForm'])){
@@ -35,17 +49,29 @@ class HoivienController extends Controller
        
     }
     public function indexAction(){
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findAll();
         if(!$hoivien){
             throw $this->createNotFoundException('không tìm thấy hội viên');
             
         }
         $build['hoivien'] = $hoivien;
-       
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_show_all.html.twig', $build);
         
     }
     public function addAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $hoivien = new Hoivien();
         $gioitinh = array(
             'nam' => 'Nam',
@@ -112,13 +138,20 @@ class HoivienController extends Controller
             $em->persist($hoivien);
             $em->flush();
             return new Response ("<p>Hôi viên được thêm thành công<p>
-                                <a>Trang chủ</a>");
+                                <a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
            
         }
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_add.html.twig', $build);
     }
     public function editAction($tendangnhap, Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $gioitinh = array(
             'nam' => 'Nam',
             'nữ' => 'Nữ'
@@ -187,12 +220,19 @@ class HoivienController extends Controller
         $form->handleRequest($request);
         if($form->isValid()){
             $em->flush();
-            return new Response('Hội viên được cập nhật thành công');
+            return new Response("<p>Hội viên được cập nhật thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_add.html.twig', $build);
     }
     public function deleteAction($tendangnhap, Request $request) {
+       $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $em = $this->getDoctrine()->getManager();
         $hoivien = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');;
         if (!$hoivien) {
@@ -207,7 +247,7 @@ class HoivienController extends Controller
         if ($form->isValid()) {
           $em->remove($hoivien);
           $em->flush();
-          return new Response('Xóa hội viên thành công');
+          return new Response("<p>Xóa hội viên thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
         
         $build['form'] = $form->createView();
@@ -215,6 +255,11 @@ class HoivienController extends Controller
     }
 
     public function multideleteAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         if(empty($_POST['xoa'])){
           throw $this->createNotFoundException(
                   'Không có hội viên nào được chọn'
@@ -243,15 +288,21 @@ class HoivienController extends Controller
                 } 
             }
        
-            return new Response('Xóa thành công');
+            return new Response("<p>Xóa thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
            
         }
     }
 
     public function reportAction(){
         
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         //thong ke tong so luong hoi vien, giai thuong, tac pham
-        $em = $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $hoivien = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findAll();
         $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findAll();
         $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findAll();
@@ -271,6 +322,20 @@ class HoivienController extends Controller
             $i++;
         }
         $build['bieudo'] = $bieudo;
+
+        //thong ke hoi vien theo toa soan
+        $toasoan = $em->getRepository('ProjectHoinhabaoBundle:Toasoan')->findAll();
+        $i = 0;
+        $thongketheotoasoan;    
+        foreach($toasoan as $ts){
+            $matoasoan = $ts->getMatoasoan();
+            $hv = $em->getRepository('ProjectHoinhabaoBundle:Hoivien')->findByMatoasoan(''.$matoasoan.'');
+            $thongke['toasoan'] = $ts->getTentoasoan();
+            $thongke['hoivien'] = $hv;
+            $thongketheotoasoan[$i] = $thongke;
+            $i++;
+        }
+        $build['thongketheotoasoan'] = $thongketheotoasoan;
         return $this->render('ProjectHoinhabaoBundle:Hoivien:hoivien_report.html.twig', $build);
     }
 }

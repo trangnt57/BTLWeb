@@ -76,7 +76,10 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">Admin
+                            <img class=\"row-avatar\" src=\"";
+        // line 43
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">Admin
                             <b class=\"caret\"></b>
                         </p>
                     </a>
@@ -161,33 +164,88 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
                         <br/><span>Chú thích:</span>
                         <br/> <div ><b style=\"color:rgba(220,220,220,1); font-width:40px;\">_____</b>:Tác phẩm</div>
                         <br/> <div ><b style=\"color:rgba(151,187,205,1); font-width:40px;\">_____</b>:Giải thưởng</div>
+                    </div>
+
+                    <div class='thongketheo-toasoan row' style=\"margin-left: 10px;\">
+                        <h3>Thống kê số lượng hội viên theo tòa soạn</h3>
+                        <table class=\"table table-bordered\">
+                            <tr>
+                                <th>Tòa soạn</th>
+                                <th>Số lượng</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                            ";
+        // line 114
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["thongketheotoasoan"]) ? $context["thongketheotoasoan"] : $this->getContext($context, "thongketheotoasoan")));
+        foreach ($context['_seq'] as $context["_key"] => $context["tk"]) {
+            // line 115
+            echo "                               <tr>
+                                    <td>";
+            // line 116
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tk"], "toasoan", array()), "html", null, true);
+            echo "</td>
+                                    <td>";
+            // line 117
+            echo twig_escape_filter($this->env, twig_length_filter($this->env, $context["tk"]), "html", null, true);
+            echo "</td>
+                                    <td>
+                                        ";
+            // line 119
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["tk"], "hoivien", array()));
+            foreach ($context['_seq'] as $context["_key"] => $context["hoivien_iteam"]) {
+                // line 120
+                echo "                                             <a href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["hoivien_iteam"], "TenDangNhap", array()))), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["hoivien_iteam"], "TenDangNhap", array()), "html", null, true);
+                echo "</a>
+                                            <br/>
+                                        ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['hoivien_iteam'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 123
+            echo "                                    </td>
+                               </tr>
+
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tk'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 127
+        echo "                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
     <script src=\"";
-        // line 109
+        // line 134
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 110
+        // line 135
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 111
+        // line 136
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 112
+        // line 137
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 113
+        // line 138
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 114
+        // line 139
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/Chart.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -195,16 +253,16 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
         var datagt = new Array();
         var labelJ = new Array();
         for(var i = 0; i < ";
-        // line 119
+        // line 144
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo"))), "html", null, true);
         echo "; i++ ){
             var bieudo = ";
-        // line 120
+        // line 145
         echo twig_jsonencode_filter((isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo")));
         echo ";
         }
         for(var i = 0; i < ";
-        // line 122
+        // line 147
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo"))), "html", null, true);
         echo "; i++ ){
             labelJ[i] = bieudo[i]['tendangnhap'];
@@ -271,6 +329,6 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
 
     public function getDebugInfo()
     {
-        return array (  208 => 122,  203 => 120,  199 => 119,  191 => 114,  187 => 113,  183 => 112,  179 => 111,  175 => 110,  171 => 109,  153 => 95,  151 => 94,  145 => 92,  143 => 91,  137 => 89,  135 => 88,  123 => 79,  116 => 75,  109 => 71,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  266 => 147,  261 => 145,  257 => 144,  249 => 139,  245 => 138,  241 => 137,  237 => 136,  233 => 135,  229 => 134,  220 => 127,  211 => 123,  199 => 120,  195 => 119,  190 => 117,  186 => 116,  183 => 115,  179 => 114,  156 => 95,  154 => 94,  148 => 92,  146 => 91,  140 => 89,  138 => 88,  126 => 79,  119 => 75,  112 => 71,  81 => 43,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

@@ -127,6 +127,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/log')) {
+            // project_login
+            if ($pathinfo === '/login') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\LoginController::loginAction',  '_route' => 'project_login',);
+            }
+
+            // project_logout
+            if ($pathinfo === '/logout') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\LoginController::logoutAction',  '_route' => 'project_logout',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/hoivien')) {
             // project_hoinhabao_homepage
             if (rtrim($pathinfo, '/') === '/hoivien') {

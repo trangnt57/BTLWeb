@@ -41,16 +41,16 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                         <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Admin
+                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
                             <b class="caret"></b>
                         </p>
                     </a>
                     <ul class="dropdown-menu">
                       
-                        <li><a href="">Sửa thông tin cá nhân</a>
+                        <li><a href="{{path('project_hoinhabao_edit', {'tendangnhap':tendangnhap})}}">Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Thoát</a>
+                        <li><a href="{{path('project_logout')}}">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -69,23 +69,23 @@
                             <ul>
                                 <li>
                                     <i class="mdi-image-filter-none"></i>
-                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tacpham_item.MaHV})}}">Thông tin hội viên</a>
+                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Thông tin hội viên</a>
                                 </li>
                                 <li>
                                     <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_tacpham', {'tendangnhap':tacpham_item.MaHV})}}">Danh sách tác phẩm</a>
+                                    <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm</a>
                                 </li>
                                 <li>
                                     <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_giaithuong', {'tendangnhap':tacpham_item.MaHV})}}">Danh sách giải thưởng</a>
+                                    <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng</a>
                                 </li>
                                 <li>
                                     <i class="mdi-content-create"></i>
-                                    <a href="{{path('project_tacpham_edit',{'tendangnhap':tacpham_item.MaHV, 'matacpham':tacpham_item.matacpham})}}">Sửa thông tin tác phẩm</a>
+                                    <a href="{{path('project_tacpham_edit',{'tendangnhap':tendangnhap, 'matacpham':tacpham_item.matacpham})}}">Sửa thông tin tác phẩm</a>
                                 </li>
                                 <li>
                                     <i class="mdi-action-delete"></i>
-                                    <a href="{{path('project_tacpham_delete',{'tendangnhap':tacpham_item.MaHV, 'matacpham':tacpham_item.matacpham})}}">Xóa tác phẩm</a>
+                                    <a href="{{path('project_tacpham_delete',{'tendangnhap':tendangnhap, 'matacpham':tacpham_item.matacpham})}}">Xóa tác phẩm</a>
                                 </li>
 
                             </ul>

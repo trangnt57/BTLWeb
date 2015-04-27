@@ -404,4 +404,32 @@ class Hoivien
 
 
    
+    /**
+     * @var string
+     */
+    private $vaitro;
+
+
+    /**
+     * Set vaitro
+     *
+     * @param string $vaitro
+     * @return Hoivien
+     */
+    public function setVaitro($vaitro)
+    {
+        $this->vaitro = $vaitro;
+
+        return $this;
+    }
+
+    /**
+     * Get vaitro
+     *
+     * @return string 
+     */
+    public function getVaitro()
+    {
+        return $this->vaitro;
+    }
 }

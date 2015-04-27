@@ -62,4 +62,32 @@ class Tinhthanh
     {
         return $this->matinhthanh;
     }
+    /**
+     * @var string
+     */
+    private $tentinhthanh;
+
+
+    /**
+     * Set tentinhthanh
+     *
+     * @param string $tentinhthanh
+     * @return Tinhthanh
+     */
+    public function setTentinhthanh($tentinhthanh)
+    {
+        $this->tentinhthanh = $tentinhthanh;
+
+        return $this;
+    }
+
+    /**
+     * Get tentinhthanh
+     *
+     * @return string 
+     */
+    public function getTentinhthanh()
+    {
+        return $this->tentinhthanh;
+    }
 }

@@ -37,7 +37,7 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                         <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Admin
+                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -46,7 +46,7 @@
                         <li><a href="">Sửa thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Thoát</a>
+                        <li><a href="{{path('project_logout')}}">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -63,18 +63,22 @@
                         </div>
                         <div class="content">
                             <ul>
-                                <li>
-                                    <i class="mdi-social-person-add"></i>
-                                    <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
-                                </li>
+                                {% if vaitro == "admin" %}
+                                    <li>
+                                        <i class="mdi-social-person-add"></i>
+                                        <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
+                                    </li>
+                                {% endif %}
                                 <li>
                                     <i class="mdi-action-list"></i>
                                     <a href="{{path('project_hoinhabao_homepage')}}">Danh sách hội viên</a>
                                 </li>
-                                <li>
-                                    <i class="mdi-image-filter-none"></i>
-                                    <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
-                                </li>
+                                {% if vaitro == "admin" %}
+                                    <li>
+                                        <i class="mdi-image-filter-none"></i>
+                                        <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -84,14 +88,18 @@
                     <h3>DANH SÁCH HỘI VIÊN</h3>
                     <div class="row">
                         <div class="col-md-9"></div>
-                        <div class="col-md-3" style="font-size:20px">
-                            <i class="mdi-social-person-add" style="color:blue"></i>
-                            <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên </a>
-                        </div>
+                        {% if vaitro == "admin" %}
+                            <div class="col-md-3" style="font-size:20px">
+                                <i class="mdi-social-person-add" style="color:blue"></i>
+                                <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên </a>
+                            </div>
+                        {% endif %}
                     </div>
 
+                     <form action="{{path('project_hoivien_multidelete')}}" method="post">
+                            
                     <table id="table-hoivien" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                         <form action="{{path('project_hoivien_multidelete')}}" method="post">
+
                         <thead>
                             <tr>
                                 <th>Mã Hội Viên</th>
@@ -100,11 +108,11 @@
                                
                                 <th>Email</th>
                                 <th>CMND</th>
-                                <th>
-                                    <button type='submit'  name='deletehoivien' class="btn btn-primary">
-                                        <i class="mdi-action-delete" style="font-size: 20px; padding-left: 3px; padding-right: 3px;"></i>
-                                    </button>
-                                </th>
+                                {% if vaitro == "admin" %}
+                                    <th name="delete">
+                                        xóa
+                                    </th>
+                                {% endif %}
                             </tr>
                         </thead>
                         <tbody>
@@ -128,23 +136,29 @@
                                     <td>
                                         {{eachhoivien.CMND}}
                                     </td>
-                                    
-                                    <td>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type='checkbox' name='xoa[]' value='{{eachhoivien.Mahv}}'>
-                                            </label>
-                                        </div>
-                                        
-                                    </td>
+                                    {% if vaitro == "admin" %}
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type='checkbox' name='xoa[]' value='{{eachhoivien.Mahv}}'>
+                                                </label>
+                                            </div>
+                                            
+                                        </td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                             
                         </tbody>
-                        </form>
+                        
                     </table>   
-                   
-                       
+                    {% if vaitro == "admin" %}
+                        <button type='submit'  name='deletehoivien' class="btn btn-primary">
+                            <i class="mdi-action-delete" style="font-size: 20px; padding-left: 3px; padding-right: 3px;"></i>
+                        
+                        </button>
+                    {% endif %}
+                </form>
                  
             </div>
         </div>

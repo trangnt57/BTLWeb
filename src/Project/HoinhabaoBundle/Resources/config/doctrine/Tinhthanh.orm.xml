@@ -4,6 +4,6 @@
     <id name="matinhthanh" type="integer" column="MaTinhThanh">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="tentinhthah" type="string" column="TenTinhThah" length="50" nullable="false"/>
+    <field name="tentinhthanh" type="string" column="TenTinhThanh" length="50" nullable="false"/>
   </entity>
 </doctrine-mapping>

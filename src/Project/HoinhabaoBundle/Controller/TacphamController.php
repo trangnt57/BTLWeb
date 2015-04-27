@@ -8,35 +8,52 @@ use Project\HoinhabaoBundle\Entity\Theloai;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class TacphamController extends Controller
 {
     public function showAction($matacpham)
     {
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
         if(!$tacpham){
             throw $this->createNotFoundException('Khong tim thay tac pham ' . $matacpham);
         }
+
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         $build['tacpham_item'] = $tacpham;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_show.html.twig', $build);
     }
 
-    public function indexAction($tendangnhap)
+    public function indexAction()
     {
-    	
-    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
+    	$session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
+    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$username.'');
     	$mahoivien = $hoivien->getMahv();
         $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findByMahv(''.$mahoivien.'');
         
-        $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         $build['tacpham'] = $tacpham;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_show_all.html.twig', $build);
     
     }
 
-    public function addAction($tendangnhap, Request $request){
-    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
+    public function addAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$username.'');
     	$tacpham = new Tacpham();
     	$form = $this->createFormBuilder($tacpham)
     		->add('tentacpham', 'text', array(
@@ -56,7 +73,6 @@ class TacphamController extends Controller
                 'multiple' => false,
                 'attr' => array('class' => 'form-control'),
             ))
-           
             ->add('lienket', 'text',array(
                 'attr' => array('class' => 'form-control', 'placeholder' => 'Đường link đến tác phẩm của bạn'),
             ))
@@ -71,16 +87,26 @@ class TacphamController extends Controller
         	$em = $this->getDoctrine()->getManager();
         	$em->persist($tacpham);
         	$em->flush();
-        	return new Response('Thêm tác phẩm thành công');
+        	return new Response("<p>Thêm tác phẩm thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
 
         $build['form'] = $form->createView();
 
-        $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
-    public function editAction($tendangnhap, $matacpham, Request $request){
+    public function editAction($matacpham, Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
     	$em = $this->getDoctrine()->getManager();
     	$tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');
     	if(!$tacpham){
@@ -117,16 +143,22 @@ class TacphamController extends Controller
         $form->handleRequest($request);
         if($form->isValid()){
         	$em->flush();
-        	return new Response('Tác phẩm đã được cập nhật');
+        	return new Response("<p>Tác phẩm đã được cập nhật</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
 
         $build['form'] = $form->createView();
-         $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Tacpham:tacpham_add.html.twig', $build);
     }
 
 
     public function deleteAction($matacpham, Request $request) {
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $em = $this->getDoctrine()->getManager();
         $tacpham = $em->getRepository('ProjectHoinhabaoBundle:Tacpham')->findOneByMatacpham(''.$matacpham.'');;
         if (!$tacpham) {
@@ -145,14 +177,21 @@ class TacphamController extends Controller
         if ($form->isValid()) {
           $em->remove($tacpham);
           $em->flush();
-          return new Response('Xóa tác phẩm thành công');
+          return new Response("<p>Xóa tác phẩm thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
         
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:tacpham:tacpham_add.html.twig', $build);
     }
 
     public function multideleteAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         if(empty($_POST['xoa'])){
           throw $this->createNotFoundException(
                   'Không có tác phẩm nào được chọn'
@@ -175,8 +214,8 @@ class TacphamController extends Controller
                     $em->flush();
                 } 
             }
-       
-            return new Response('Xóa thành công');
+        
+            return new Response("<p>Xóa thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
            
         }
     }

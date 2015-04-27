@@ -8,25 +8,36 @@ use Project\HoinhabaoBundle\Entity\Theloai;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class GiaithuongController extends Controller
 {
     
-    public function indexAction($tendangnhap)
+    public function indexAction()
     {
-        
-        $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
+        $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$username.'');
         $mahoivien = $hoivien->getMahv();
         $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMahv(''.$mahoivien.'');
         
-        $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         $build['giaithuong'] = $giaithuong;
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_show_all.html.twig', $build);
     
     }
-    public function addAction($tendangnhap, Request $request){
-    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$tendangnhap.'');
+    public function addAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
+    	$hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$username.'');
     	$giaithuong = new Giaithuong();
     	$form = $this->createFormBuilder($giaithuong)
     		->add('tengiaithuong', 'text', array(
@@ -37,12 +48,10 @@ class GiaithuongController extends Controller
                 'format' => 'yyyy-MM-dd',
                 'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd'),
                 ))
-    		->add('matacpham', 'entity', array(
-                'class' => 'ProjectHoinhabaoBundle:Tacpham',
-                'property' => 'tentacpham',
-                'multiple' => false,
-                'attr' => array('class' => 'form-control', 'placeholder'=>'Chọn tác phẩm đạt giải'),
+    		->add('mota', 'textarea', array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3')
             ))
+           
            
             ->add('add', 'submit',array(
                 'label' => 'Lưu',
@@ -56,15 +65,21 @@ class GiaithuongController extends Controller
         	$em = $this->getDoctrine()->getManager();
         	$em->persist($giaithuong);
         	$em->flush();
-        	return new Response('<p>Thêm giải thưởng thành công</p><a>Trở về</a>');
+        	return new Response("<p>Thêm giải thưởng thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
 
         $build['form'] = $form->createView();
-        $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
-   public function editAction($tendangnhap, $magiaithuong, Request $request){
+   public function editAction($magiaithuong, Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $em = $this->getDoctrine()->getManager();
         $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');
         if(!$giaithuong){
@@ -80,11 +95,8 @@ class GiaithuongController extends Controller
                 'format' => 'yyyy-MM-dd',
                 'attr' => array('class' => 'form-control', 'placeholder' => 'yyyy-MM-dd'),
                 ))
-            ->add('matacpham', 'entity', array(
-                'class' => 'ProjectHoinhabaoBundle:Tacpham',
-                'property' => 'tentacpham',
-                'multiple' => false,
-                'attr' => array('class' => 'form-control', 'placeholder'=>'Chọn tác phẩm đạt giải'),
+            ->add('mota', 'textarea', array(
+                'attr' => array('class' => 'form-control', 'rows'=> '3')
             ))
            
             ->add('add', 'submit',array(
@@ -98,16 +110,22 @@ class GiaithuongController extends Controller
         if($form->isValid()){
             
             $em->flush();
-            return new Response('Giải thưởng được cập nhật thành công');
+            return new Response("<p>Giải thưởng được cập nhật thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
 
         $build['form'] = $form->createView();
-        $build['tendangnhap'] = $tendangnhap;
+        $build['tendangnhap'] = $username;
+        $build['hoivien'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
 
     public function deleteAction($magiaithuong, Request $request) {
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         $em = $this->getDoctrine()->getManager();
         $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$magiaithuong.'');
         if (!$giaithuong) {
@@ -122,15 +140,22 @@ class GiaithuongController extends Controller
         if ($form->isValid()) {
           $em->remove($giaithuong);
           $em->flush();
-          return new Response('Xóa giải thưởng thành công');
+          return new Response("<p>Xóa giải thưởng thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
         
         $build['form'] = $form->createView();
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
 
     public function multideleteAction(Request $request){
+        $session = $request->getSession();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
         if(empty($_POST['xoa'])){
           throw $this->createNotFoundException(
                   'Không có giải thưởng nào được chọn'
@@ -143,7 +168,7 @@ class GiaithuongController extends Controller
                $em->remove($giaithuong);
                 $em->flush(); 
             }
-            return new Response('Xóa thành công');
+            return new Response("<p>Xóa thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
         }
     }
 }

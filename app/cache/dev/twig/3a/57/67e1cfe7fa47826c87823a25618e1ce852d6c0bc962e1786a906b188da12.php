@@ -76,8 +76,10 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">";
+                            <img class=\"row-avatar\" src=\"";
         // line 43
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">";
         echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
         echo "
                             <b class=\"caret\"></b>
@@ -88,10 +90,13 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                         <li><a href=\"";
         // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Sửa thông tin cá nhân</a>
+        echo "\">Thông tin cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 52
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -162,21 +167,21 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                             </div>
                         </div>
 
-                        <table id=\"table-giaithuong\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">
-                             <form action=\"";
-        // line 106
+                        <form action=\"";
+        // line 105
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong_multidelete", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\" method=\"post\">
+                        <table id=\"table-giaithuong\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">
+                             
                             <thead>
                                 <tr>
                                     <th>Mã Giải Thưởng</th>
                                     <th>Tên Giải Thưởng</th>
                                     <th>Tác Phẩm Đạt Giải</th>
                                     <th>Ngày Đạt Giải</th>
-                                    <th>
-                                        <button type='submit'  name='deletegiaithuong' class=\"btn btn-primary\">
-                                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
-                                        </button>
+                                    <th name=\"delete\">
+                                        Xóa
+                                       
                                     </th>
                                     <th>
                                         Sửa
@@ -242,8 +247,13 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
         // line 152
         echo "                                
                             </tbody>
-                            </form>
-                        </table>   
+                            
+                        </table>
+                        <button type='submit'  name='deletegiaithuong' class=\"btn btn-primary\">
+                        
+                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
+                        </button>
+                        </form>   
                     </div>
                            
                  
@@ -252,23 +262,23 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
     </div>
     
     <script src=\"";
-        // line 163
+        // line 168
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 164
+        // line 169
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 165
+        // line 170
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 166
+        // line 171
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 167
+        // line 172
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -311,6 +321,6 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
 
     public function getDebugInfo()
     {
-        return array (  272 => 167,  268 => 166,  264 => 165,  260 => 164,  256 => 163,  243 => 152,  231 => 146,  223 => 141,  215 => 136,  209 => 133,  203 => 130,  197 => 127,  193 => 125,  189 => 124,  168 => 106,  160 => 101,  143 => 87,  136 => 83,  129 => 79,  122 => 75,  115 => 71,  90 => 49,  81 => 43,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  282 => 172,  278 => 171,  274 => 170,  270 => 169,  266 => 168,  248 => 152,  236 => 146,  228 => 141,  220 => 136,  214 => 133,  208 => 130,  202 => 127,  198 => 125,  194 => 124,  172 => 105,  165 => 101,  148 => 87,  141 => 83,  134 => 79,  127 => 75,  120 => 71,  98 => 52,  92 => 49,  81 => 43,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

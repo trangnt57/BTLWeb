@@ -64,10 +64,10 @@ class Tinhthanh extends \Project\HoinhabaoBundle\Entity\Tinhthanh implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthah', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'matinhthanh');
+            return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthah', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'matinhthanh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthanh');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthah', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'matinhthanh');
+        return array('__isInitialized__', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthah', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'matinhthanh', '' . "\0" . 'Project\\HoinhabaoBundle\\Entity\\Tinhthanh' . "\0" . 'tentinhthanh');
     }
 
     /**
@@ -208,6 +208,28 @@ class Tinhthanh extends \Project\HoinhabaoBundle\Entity\Tinhthanh implements \Do
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMatinhthanh', array());
 
         return parent::getMatinhthanh();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setTentinhthanh($tentinhthanh)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTentinhthanh', array($tentinhthanh));
+
+        return parent::setTentinhthanh($tentinhthanh);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTentinhthanh()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTentinhthanh', array());
+
+        return parent::getTentinhthanh();
     }
 
 }

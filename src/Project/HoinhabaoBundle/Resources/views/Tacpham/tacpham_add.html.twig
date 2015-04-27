@@ -3,7 +3,7 @@
 <head>
 
     <link href="{{ asset('bundles/projecthoinhabao/css/bootstrap.min.css') }}" rel="stylesheet">
-   	<link href="{{ asset('bundles/projecthoinhabao/material/css/ripples.min.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('bundles/projecthoinhabao/material/css/ripples.min.css') }}" rel="stylesheet"> 
     <link href="{{ asset('bundles/projecthoinhabao/material/css/material-wfont.min.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/projecthoinhabao/css/style.css') }}" rel="stylesheet">
     <title>Thêm tác phẩm</title>
@@ -38,16 +38,16 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                         <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">{{tendangnhap}}
+                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
                             <b class="caret"></b>
                         </p>
                     </a>
                     <ul class="dropdown-menu">
                       
-                        <li><a href="{{path('project_hoinhabao_edit',{'tendangnhap': tendangnhap})}}">Sửa thông tin cá nhân</a>
+                        <li><a href="{{path('project_hoinhabao_edit',{'tendangnhap': tendangnhap})}}">Thông tin cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Thoát</a>
+                        <li><a href="{{path('project_logout')}}">Thoát</a>
                         </li>
                     </ul>
                 </li>

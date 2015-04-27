@@ -71,8 +71,10 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">";
+                            <img class=\"row-avatar\" src=\"";
         // line 41
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">";
         echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
         echo "
                             <b class=\"caret\"></b>
@@ -83,10 +85,13 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
                         <li><a href=\"";
         // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Sửa thông tin cá nhân</a>
+        echo "\">Thông tin cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 50
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -285,6 +290,6 @@ class __TwigTemplate_cd9f6a1287dcb480b6d59c7c693ececefc8c465441d9bbb61c2c5d1d322
 
     public function getDebugInfo()
     {
-        return array (  267 => 154,  263 => 153,  259 => 152,  255 => 151,  246 => 145,  239 => 141,  230 => 135,  225 => 133,  217 => 128,  212 => 126,  204 => 121,  199 => 119,  191 => 114,  185 => 111,  178 => 107,  173 => 105,  168 => 102,  164 => 100,  160 => 98,  157 => 97,  155 => 96,  150 => 94,  138 => 85,  131 => 81,  124 => 77,  117 => 73,  110 => 69,  85 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  272 => 154,  268 => 153,  264 => 152,  260 => 151,  251 => 145,  244 => 141,  235 => 135,  230 => 133,  222 => 128,  217 => 126,  209 => 121,  204 => 119,  196 => 114,  190 => 111,  183 => 107,  178 => 105,  173 => 102,  169 => 100,  165 => 98,  162 => 97,  160 => 96,  155 => 94,  143 => 85,  136 => 81,  129 => 77,  122 => 73,  115 => 69,  93 => 50,  87 => 47,  76 => 41,  65 => 33,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

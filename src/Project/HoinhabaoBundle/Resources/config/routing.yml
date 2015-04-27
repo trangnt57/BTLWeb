@@ -1,3 +1,10 @@
+project_login:
+    path:     /login
+    defaults: { _controller: ProjectHoinhabaoBundle:Login:login } 
+project_logout:
+    path:     /logout
+    defaults: { _controller: ProjectHoinhabaoBundle:Login:logout } 
+
 project_hoinhabao_homepage:
     path:     /hoivien/
     defaults: { _controller: ProjectHoinhabaoBundle:Hoivien:index }

@@ -2,7 +2,6 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Project\HoinhabaoBundle\Entity\Giaithuong" table="giaithuong">
     <indexes>
-      <index name="FK_2C2DF4A9DD199E24" columns="MaTacPham"/>
       <index name="FK_2C2DF4A9BB87CF27" columns="MaHV"/>
     </indexes>
     <id name="magiaithuong" type="integer" column="MaGiaiThuong">
@@ -10,11 +9,7 @@
     </id>
     <field name="tengiaithuong" type="string" column="TenGiaiThuong" length="128" nullable="false"/>
     <field name="ngaydatgiai" type="date" column="NgayDatGiai" nullable="false"/>
-    <many-to-one field="matacpham" target-entity="Tacpham">
-      <join-columns>
-        <join-column name="MaTacPham" referenced-column-name="MaTacPham"/>
-      </join-columns>
-    </many-to-one>
+    <field name="mota" type="text" column="MoTa" nullable="true"/>
     <many-to-one field="mahv" target-entity="Hoivien">
       <join-columns>
         <join-column name="MaHV" referenced-column-name="MaHV"/>

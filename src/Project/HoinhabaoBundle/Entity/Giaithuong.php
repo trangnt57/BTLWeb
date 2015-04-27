@@ -159,4 +159,32 @@ class Giaithuong
         return $this->mahv;
     }
 
+    /**
+     * @var string
+     */
+    private $mota;
+
+
+    /**
+     * Set mota
+     *
+     * @param string $mota
+     * @return Giaithuong
+     */
+    public function setMota($mota)
+    {
+        $this->mota = $mota;
+
+        return $this;
+    }
+
+    /**
+     * Get mota
+     *
+     * @return string 
+     */
+    public function getMota()
+    {
+        return $this->mota;
+    }
 }

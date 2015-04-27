@@ -73,7 +73,12 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">Admin
+                            <img class=\"row-avatar\" src=\"";
+        // line 40
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">";
+        echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
+        echo "
                             <b class=\"caret\"></b>
                         </p>
                     </a>
@@ -82,7 +87,10 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                         <li><a href=\"\">Sửa thông tin cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 49
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -99,55 +107,73 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                         </div>
                         <div class=\"content\">
                             <ul>
-                                <li>
-                                    <i class=\"mdi-social-person-add\"></i>
-                                    <a href=\"";
-        // line 68
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
-        echo "\">Thêm hội viên</a>
-                                </li>
-                                <li>
+                                ";
+        // line 66
+        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+            // line 67
+            echo "                                    <li>
+                                        <i class=\"mdi-social-person-add\"></i>
+                                        <a href=\"";
+            // line 69
+            echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
+            echo "\">Thêm hội viên</a>
+                                    </li>
+                                ";
+        }
+        // line 72
+        echo "                                <li>
                                     <i class=\"mdi-action-list\"></i>
                                     <a href=\"";
-        // line 72
+        // line 74
         echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
         echo "\">Danh sách hội viên</a>
                                 </li>
-                                <li>
-                                    <i class=\"mdi-image-filter-none\"></i>
-                                    <a href=\"";
+                                ";
         // line 76
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_report");
-        echo "\">Báo cáo</a>
-                                </li>
-                            </ul>
+        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+            // line 77
+            echo "                                    <li>
+                                        <i class=\"mdi-image-filter-none\"></i>
+                                        <a href=\"";
+            // line 79
+            echo $this->env->getExtension('routing')->getPath("project_hoinhabao_report");
+            echo "\">Báo cáo</a>
+                                    </li>
+                                ";
+        }
+        // line 82
+        echo "                            </ul>
                         </div>
                     </div>
-                    <div class=\"change-template\">
-                        ";
-        // line 82
-        $this->env->loadTemplate("ProjectHoinhabaoBundle:Template:change_template.html.twig")->display($context);
-        // line 83
-        echo "                    </div>
+                    
                 </div>
                 <div class=\"col-md-9\" style=\"border-left: 2px solid red; text-align: center;\">
                     <h3>DANH SÁCH HỘI VIÊN</h3>
                     <div class=\"row\">
                         <div class=\"col-md-9\"></div>
-                        <div class=\"col-md-3\" style=\"font-size:20px\">
-                            <i class=\"mdi-social-person-add\" style=\"color:blue\"></i>
-                            <a href=\"";
+                        ";
         // line 91
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
-        echo "\">Thêm hội viên </a>
-                        </div>
-                    </div>
+        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+            // line 92
+            echo "                            <div class=\"col-md-3\" style=\"font-size:20px\">
+                                <i class=\"mdi-social-person-add\" style=\"color:blue\"></i>
+                                <a href=\"";
+            // line 94
+            echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
+            echo "\">Thêm hội viên </a>
+                            </div>
+                        ";
+        }
+        // line 97
+        echo "                    </div>
 
-                    <table id=\"table-hoivien\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">
-                         <form action=\"";
-        // line 96
+                     <form action=\"";
+        // line 99
         echo $this->env->getExtension('routing')->getPath("project_hoivien_multidelete");
         echo "\" method=\"post\">
+                            
+                    <table id=\"table-hoivien\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">
+
                         <thead>
                             <tr>
                                 <th>Mã Hội Viên</th>
@@ -156,31 +182,36 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                
                                 <th>Email</th>
                                 <th>CMND</th>
-                                <th>
-                                    <button type='submit'  name='deletehoivien' class=\"btn btn-primary\">
-                                        <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
-                                    </button>
-                                </th>
-                            </tr>
+                                ";
+        // line 111
+        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+            // line 112
+            echo "                                    <th name=\"delete\">
+                                        xóa
+                                    </th>
+                                ";
+        }
+        // line 116
+        echo "                            </tr>
                         </thead>
                         <tbody>
 
                             ";
-        // line 114
+        // line 120
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["hoivien"]) ? $context["hoivien"] : $this->getContext($context, "hoivien")));
         foreach ($context['_seq'] as $context["_key"] => $context["eachhoivien"]) {
-            // line 115
+            // line 121
             echo "                                <tr>
                                     <td>
                                         ";
-            // line 117
+            // line 123
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "MaHV", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         <a href=\"";
-            // line 120
+            // line 126
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()), "html", null, true);
@@ -188,7 +219,7 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                     </td>
                                     <td>
                                         ";
-            // line 123
+            // line 129
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "HoTen", array()), "html", null, true);
             echo "
                                     </td>
@@ -196,64 +227,80 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                     
                                     <td>
                                         ";
-            // line 128
+            // line 134
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Email", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         ";
-            // line 131
+            // line 137
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "CMND", array()), "html", null, true);
             echo "
                                     </td>
-                                    
-                                    <td>
-                                        <div class=\"checkbox\">
-                                            <label>
-                                                <input type='checkbox' name='xoa[]' value='";
-            // line 137
-            echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Mahv", array()), "html", null, true);
-            echo "'>
-                                            </label>
-                                        </div>
-                                        
-                                    </td>
-                                </tr>
+                                    ";
+            // line 139
+            if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+                // line 140
+                echo "                                        <td>
+                                            <div class=\"checkbox\">
+                                                <label>
+                                                    <input type='checkbox' name='xoa[]' value='";
+                // line 143
+                echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Mahv", array()), "html", null, true);
+                echo "'>
+                                                </label>
+                                            </div>
+                                            
+                                        </td>
+                                    ";
+            }
+            // line 149
+            echo "                                </tr>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['eachhoivien'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 144
+        // line 151
         echo "                            
                         </tbody>
-                        </form>
+                        
                     </table>   
-                   
-                       
+                    ";
+        // line 155
+        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
+            // line 156
+            echo "                        <button type='submit'  name='deletehoivien' class=\"btn btn-primary\">
+                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
+                        
+                        </button>
+                    ";
+        }
+        // line 161
+        echo "                </form>
                  
             </div>
         </div>
     </div>
     
     <script src=\"";
-        // line 155
+        // line 167
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 156
+        // line 168
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 157
+        // line 169
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 158
+        // line 170
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 159
+        // line 171
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -288,6 +335,6 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
 
     public function getDebugInfo()
     {
-        return array (  257 => 159,  253 => 158,  249 => 157,  245 => 156,  241 => 155,  228 => 144,  215 => 137,  206 => 131,  200 => 128,  192 => 123,  184 => 120,  178 => 117,  174 => 115,  170 => 114,  149 => 96,  141 => 91,  131 => 83,  129 => 82,  120 => 76,  113 => 72,  106 => 68,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  304 => 171,  300 => 170,  296 => 169,  292 => 168,  288 => 167,  280 => 161,  273 => 156,  271 => 155,  265 => 151,  258 => 149,  249 => 143,  244 => 140,  242 => 139,  237 => 137,  231 => 134,  223 => 129,  215 => 126,  209 => 123,  205 => 121,  201 => 120,  195 => 116,  189 => 112,  187 => 111,  172 => 99,  168 => 97,  162 => 94,  158 => 92,  156 => 91,  145 => 82,  139 => 79,  135 => 77,  133 => 76,  128 => 74,  124 => 72,  118 => 69,  114 => 67,  112 => 66,  92 => 49,  78 => 40,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

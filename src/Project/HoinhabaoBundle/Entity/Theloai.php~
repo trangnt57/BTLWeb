@@ -92,4 +92,8 @@ class Theloai
     {
         return $this->matheloai;
     }
+
+    public function __toString(){
+        return $this->tentheloai;
+    }
 }

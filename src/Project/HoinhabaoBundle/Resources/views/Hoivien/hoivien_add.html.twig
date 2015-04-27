@@ -38,16 +38,16 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                         <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Admin
+                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
                             <b class="caret"></b>
                         </p>
                     </a>
                     <ul class="dropdown-menu">
                       
-                        <li><a href="javascript:void(0)">Sửa thông tin cá nhân</a>
+                        <li><a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Trang cá nhân</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Thoát</a>
+                        <li><a href="{{path('project_logout')}}">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -62,20 +62,24 @@
                         <div class="toolbar">
                             <legend>Chức năng</legend>
                         </div>
-                        <div class="content">
+                         <div class="content">
                             <ul>
-                                <li>
-                                    <i class="mdi-social-person-add"></i>
-                                    <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
-                                </li>
+                                {% if vaitro == "admin" %}
+                                    <li>
+                                        <i class="mdi-social-person-add"></i>
+                                        <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
+                                    </li>
+                                {% endif %}
                                 <li>
                                     <i class="mdi-action-list"></i>
                                     <a href="{{path('project_hoinhabao_homepage')}}">Danh sách hội viên</a>
                                 </li>
-                                <li>
-                                    <i class="mdi-image-filter-none"></i>
-                                    <a>Báo cáo</a>
-                                </li>
+                                {% if vaitro == "admin" %}
+                                    <li>
+                                        <i class="mdi-image-filter-none"></i>
+                                        <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

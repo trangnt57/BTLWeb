@@ -40,7 +40,7 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
                         <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="http://lorempixel.com/56/56/people/6" alt="icon">Admin
+                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">Admin
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -101,6 +101,31 @@
                         <br/><span>Chú thích:</span>
                         <br/> <div ><b style="color:rgba(220,220,220,1); font-width:40px;">_____</b>:Tác phẩm</div>
                         <br/> <div ><b style="color:rgba(151,187,205,1); font-width:40px;">_____</b>:Giải thưởng</div>
+                    </div>
+
+                    <div class='thongketheo-toasoan row' style="margin-left: 10px;">
+                        <h3>Thống kê số lượng hội viên theo tòa soạn</h3>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Tòa soạn</th>
+                                <th>Số lượng</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                            {% for tk in thongketheotoasoan %}
+                               <tr>
+                                    <td>{{tk.toasoan}}</td>
+                                    <td>{{tk|length}}</td>
+                                    <td>
+                                        {% for hoivien_iteam  in tk.hoivien%}
+                                             <a href="{{path('project_hoinhabao_show',{'tendangnhap': hoivien_iteam.TenDangNhap })}}">{{hoivien_iteam.TenDangNhap}}</a>
+                                            <br/>
+                                        {% endfor %}
+                                    </td>
+                               </tr>
+
+                            {% endfor%}
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

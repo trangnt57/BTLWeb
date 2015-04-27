@@ -111,8 +111,7 @@ class Hoivien
      */
     private $matoasoan;
 
-
-
+    
     /**
      * Set tendangnhap
      *
@@ -399,8 +398,38 @@ class Hoivien
         return $this->matoasoan;
     }
 
-
+     public function __toString(){
+        return $this->tendangnhap;
+    }
 
 
    
+    /**
+     * @var string
+     */
+    private $vaitro;
+
+
+    /**
+     * Set vaitro
+     *
+     * @param string $vaitro
+     * @return Hoivien
+     */
+    public function setVaitro($vaitro)
+    {
+        $this->vaitro = $vaitro;
+
+        return $this;
+    }
+
+    /**
+     * Get vaitro
+     *
+     * @return string 
+     */
+    public function getVaitro()
+    {
+        return $this->vaitro;
+    }
 }

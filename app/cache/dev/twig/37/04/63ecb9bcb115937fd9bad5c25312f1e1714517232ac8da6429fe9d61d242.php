@@ -77,16 +77,27 @@ class __TwigTemplate_370463ecb9bcb115937fd9bad5c25312f1e1714517232ac8da6429fe9d6
                 <li class=\"dropdown\">
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"http://lorempixel.com/56/56/people/6\" alt=\"icon\">Admin
+                            <img class=\"row-avatar\" src=\"";
+        // line 44
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
+        echo "\" alt=\"icon\">";
+        echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
+        echo "
                             <b class=\"caret\"></b>
                         </p>
                     </a>
                     <ul class=\"dropdown-menu\">
                       
-                        <li><a href=\"\">Sửa thông tin cá nhân</a>
+                        <li><a href=\"";
+        // line 50
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
+        echo "\">Thông tin cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 53
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -107,35 +118,35 @@ class __TwigTemplate_370463ecb9bcb115937fd9bad5c25312f1e1714517232ac8da6429fe9d6
                                     <i class=\"mdi-image-filter-none\"></i>
                                     <a href=\"";
         // line 72
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "MaHV", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\">Thông tin hội viên</a>
                                 </li>
                                 <li>
                                     <i class=\"mdi-action-list\"></i>
                                     <a href=\"";
         // line 76
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham", array("tendangnhap" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "MaHV", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\">Danh sách tác phẩm</a>
                                 </li>
                                 <li>
                                     <i class=\"mdi-action-list\"></i>
                                     <a href=\"";
         // line 80
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong", array("tendangnhap" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "MaHV", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\">Danh sách giải thưởng</a>
                                 </li>
                                 <li>
                                     <i class=\"mdi-content-create\"></i>
                                     <a href=\"";
         // line 84
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_edit", array("tendangnhap" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "MaHV", array()), "matacpham" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "matacpham", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "matacpham" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "matacpham", array()))), "html", null, true);
         echo "\">Sửa thông tin tác phẩm</a>
                                 </li>
                                 <li>
                                     <i class=\"mdi-action-delete\"></i>
                                     <a href=\"";
         // line 88
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_delete", array("tendangnhap" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "MaHV", array()), "matacpham" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "matacpham", array()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_delete", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "matacpham" => $this->getAttribute((isset($context["tacpham_item"]) ? $context["tacpham_item"] : $this->getContext($context, "tacpham_item")), "matacpham", array()))), "html", null, true);
         echo "\">Xóa tác phẩm</a>
                                 </li>
 
@@ -296,6 +307,6 @@ class __TwigTemplate_370463ecb9bcb115937fd9bad5c25312f1e1714517232ac8da6429fe9d6
 
     public function getDebugInfo()
     {
-        return array (  271 => 188,  267 => 187,  263 => 186,  259 => 185,  248 => 177,  233 => 165,  218 => 153,  203 => 141,  189 => 130,  174 => 118,  159 => 106,  138 => 88,  131 => 84,  124 => 80,  117 => 76,  110 => 72,  71 => 36,  42 => 10,  38 => 9,  34 => 8,  30 => 7,  26 => 6,  19 => 1,);
+        return array (  282 => 188,  278 => 187,  274 => 186,  270 => 185,  259 => 177,  244 => 165,  229 => 153,  214 => 141,  200 => 130,  185 => 118,  170 => 106,  149 => 88,  142 => 84,  135 => 80,  128 => 76,  121 => 72,  99 => 53,  93 => 50,  82 => 44,  71 => 36,  42 => 10,  38 => 9,  34 => 8,  30 => 7,  26 => 6,  19 => 1,);
     }
 }
