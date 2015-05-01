@@ -17,45 +17,18 @@
         .mdi-editor-mode-edit{
             font-size: 20px;
         }
+        .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{path('project_hoinhabao_homepage')}}">Trang Chủ</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                        <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <ul class="dropdown-menu">
-                      
-                        <li><a href="{{path('project_hoinhabao_edit', {'tendangnhap':tendangnhap})}}">Thông tin cá nhân</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{{path('project_logout')}}">Thoát</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% include 'ProjectHoinhabaoBundle:Template:header.html.twig' %}
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -64,34 +37,31 @@
                         <div class="toolbar">
                             <legend>Chức năng</legend>
                         </div>
-                        <div class="content">
-                            <ul>
-                                <li>
-                                    <i class="mdi-av-playlist-add"></i>
-                                    <a href="{{path('project_giaithuong_add', {'tendangnhap':tendangnhap})}}">Thêm giải thưởng</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-av-playlist-add"></i>
-                                    <a href="{{path('project_tacpham_add', {'tendangnhap':tendangnhap})}}">Thêm tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-image-filter-none"></i>
-                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Thông tin cá nhân</a>
-                                </li>
-                            </ul>
+                         <div class="content">
+                            {% include 'ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig' %}
                         </div>
+                        <!--end content-->
                     </div>
                 </div>
                 <div class="col-md-9" style="border-left: 2px solid red; text-align: center;">
-                    
+                    {% for flashMessage in app.session.flashbag.get('delete-multi') %}
+                         <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                    {% for flashMessagea in app.session.flashbag.get('add-giaithuong') %}
+                         <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ flashMessagea }}
+                        </div>
+                    {% endfor %}
+                    {% for flashMessageb in app.session.flashbag.get('edit-giaithuong') %}
+                         <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ flashMessageb }}
+                        </div>
+                    {% endfor %}
                     <div class="danhsachgiaithuong" style="background:">
                         <h3>DANH SÁCH GIẢI THƯỞNG</h3>
                         <div class="row">
@@ -109,10 +79,12 @@
                                 <tr>
                                     <th>Mã Giải Thưởng</th>
                                     <th>Tên Giải Thưởng</th>
-                                    <th>Tác Phẩm Đạt Giải</th>
                                     <th>Ngày Đạt Giải</th>
                                     <th name="delete">
-                                        Xóa
+                                       <button type='submit'  name='deletetacpham' class="btn btn-primary delete-multi-tacpham">
+                                            <i class="mdi-action-delete" style="font-size: 20px; padding-left: 3px; padding-right: 3px;"></i>
+                                        
+                                        </button>
                                        
                                     </th>
                                     <th>
@@ -121,16 +93,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for gt in giaithuong %}
+                                {% for gt in i_giaithuong %}
                                     <tr>
                                         <td>
                                             {{gt.MaGiaiThuong}}
                                         </td>
                                         <td>
                                             {{gt.TenGiaiThuong}}
-                                        </td>
-                                        <td>
-                                            {{gt.MaTacPham}}
                                         </td>
                                         <td>
                                             {{gt.NgayDatGiai|date('Y-m-d')}}
@@ -153,9 +122,9 @@
                             </tbody>
                             
                         </table>
-                        <button type='submit'  name='deletegiaithuong' class="btn btn-primary">
-                        
-                            <i class="mdi-action-delete" style="font-size: 20px; padding-left: 3px; padding-right: 3px;"></i>
+                        <button type='submit'  name='deletehoivien' class="btn btn-primary select-all">
+                           Xóa Toàn Bộ
+                                        
                         </button>
                         </form>   
                     </div>
@@ -175,6 +144,34 @@
             
             $('#table-giaithuong').DataTable();
         } );
+
+        $('.select-all').click(function(){
+            $('input[name="xoa[]"]').attr('checked', true);
+        });
+        $('form').submit(function(){
+            var atLeastOneIsChecked = $('input[name="xoa[]"]:checked').length;
+            if(atLeastOneIsChecked == 0)
+                alert('Chưa có giải thưởng nào được chọn.');
+            else{
+                if(confirm("Bạn thật sự muốn xóa giải thưởng này?")){
+
+                }else{
+                    $('input[name="xoa[]"]').attr('checked', false);
+                }
+            }
+        });
+        $('.mdi-content-add-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).show();
+            });
+            $('.mdi-content-remove-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).hide();
+            });
     </script>
 
 </body>

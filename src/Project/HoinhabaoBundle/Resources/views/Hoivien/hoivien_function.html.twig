@@ -1,0 +1,120 @@
+
+    
+   
+    
+            
+                <ul>
+                    {% if vaitro == "admin" %}
+                    <li>
+                        <i class="mdi-content-add-circle-outline first"></i>
+                        <i class="mdi-content-remove-circle-outline first" style="display:none"></i>
+                        Quản lý hội viên
+                        <ul id="first" style="display:none">
+                            <li>
+                                <i class="mdi-social-person-add"></i>
+                                <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-list"></i>
+                                <a href="{{path('project_hoinhabao_homepage')}}">Danh sách hội viên <span class="badge">{{hoivien|length}}</span></a>
+                            </li>
+                            <li>
+                                <i class="mdi-communication-dnd-on"></i>
+                                <a href="{{path('project_hoinhabao_inactive')}}">Chưa kích hoạt <span class="badge">{{inactive|length}}</span></a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-receipt"></i>
+                                 <a href="{{path('project_tacpham_all')}}">Tác phẩm <span class="badge">{{toanbotacpham|length}}</span></a>
+                            </li>
+                            <li>
+                                <i class="mdi-maps-local-florist"></i>
+                                <a href="{{path('project_giaithuong_all')}}">Giải thưởng <span class="badge">{{toanbogiaithuong|length}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="mdi-content-add-circle-outline second"></i>
+                        <i class="mdi-content-remove-circle-outline second" style="display:none"></i>
+                        Tác phẩm
+                        <ul id="second" style="display:none">
+                            <li>
+                                <i class="mdi-av-playlist-add"></i>
+                                <a href="{{path('project_tacpham_add', {'tendangnhap':tendangnhap})}}">Thêm tác phẩm</a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-list"></i>
+                                <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm <span class="badge">{{tacpham|length}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="mdi-content-add-circle-outline third"></i>
+                        <i class="mdi-content-remove-circle-outline third" style="display:none"></i>
+                        Giải thưởng
+                        <ul id="third" style="display:none">
+                            <li>
+                                <i class="mdi-av-playlist-add"></i>
+                                <a href="{{path('project_giaithuong_add', {'tendangnhap':tendangnhap})}}">Thêm giải thưởng </a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-list"></i>
+                                <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng <span class="badge">{{giaithuong|length}}</span></a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <i class="mdi-content-add-circle-outline fourth"></i>
+                        <i class="mdi-content-remove-circle-outline fourth" style="display:none"></i>
+                        <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <i class="mdi-content-add-circle-outline second"></i>
+                        <i class="mdi-content-remove-circle-outline second" style="display:none"></i>
+                        Tác phẩm
+                        <ul id="second" style="display:none">
+                            <li>
+                                <i class="mdi-av-playlist-add"></i>
+                                <a href="{{path('project_tacpham_add', {'tendangnhap':tendangnhap})}}">Thêm tác phẩm</a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-list"></i>
+                                <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i class="mdi-content-add-circle-outline third"></i>
+                        <i class="mdi-content-remove-circle-outline third" style="display:none"></i>
+                        Giải thưởng
+                        <ul id="third" style="display:none">
+                            <li>
+                                <i class="mdi-av-playlist-add"></i>
+                                <a href="{{path('project_giaithuong_add', {'tendangnhap':tendangnhap})}}">Thêm giải thưởng</a>
+                            </li>
+                            <li>
+                                <i class="mdi-action-list"></i>
+                                <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng</a>
+
+                            </li>
+                        </ul>
+                    </li>
+
+                    {% endif %}
+                                
+                </ul>
+            
+        <!--end content-->
+                    
+                 
+         
+    
+    
+  
+
+
+
+
+

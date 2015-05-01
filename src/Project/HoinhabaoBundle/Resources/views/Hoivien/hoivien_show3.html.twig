@@ -1,0 +1,330 @@
+
+<html>
+
+<head>
+
+    <link href="{{ asset('bundles/projecthoinhabao/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projecthoinhabao/material/css/ripples.min.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('bundles/projecthoinhabao/material/css/material-wfont.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projecthoinhabao/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/projecthoinhabao/css/jquery.dataTables.css') }}" rel="stylesheet">
+
+    <title>Hội viên</title>
+    <style type="text/css">
+      
+        ul{
+            list-style: none;
+        }
+        .hoivien-info{
+            font-size: 16px;
+        }
+        .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
+
+        body{
+          background: white;
+          width: 97%;
+        }
+        .hoivien-infomation{
+          margin-top: 100px;
+        }
+        .navbar{
+          background: #F68A2B;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% include 'ProjectHoinhabaoBundle:Template:header.html.twig' %}
+    <div class="container">
+        <div class="">
+            <div class="row">
+                
+                <div class="col-md-9 hoivien-info" style="border-right: 2px solid red;">
+                   {% for flashMessageh in app.session.flashbag.get('edit-hoivien') %}
+                         <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ flashMessageh }}
+                        </div>
+                    {% endfor %}
+                   <h3>Thông tin hội viên</h3>
+                   <div class="row">
+                       <div class = "col-md-1">
+                             <i class="mdi-image-filter-1"></i>
+                       </div>
+                       <div class="col-md-2">
+                           
+                            <b>Mã Hội viên</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.MaHV}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-social-mood"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Tên Đăng Nhập</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.TenDangNhap}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-action-account-box"></i>
+                       </div>
+                       <div class="col-md-2">
+                            <b>Họ Tên</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.HoTen}}
+                       </div>
+                    </div>
+                    <div class='row'>
+                       <div class="col-md-1">
+                            <i class = "mdi-social-cake"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Ngày Sinh</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.NgaySinh | date('Y-m-d')}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class= 'mdi-social-group'></i>
+                       </div>
+                       <div class="col-md-2">
+                            <b>Giới Tính</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.GioiTinh}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class = "mdi-social-domain"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Quê Quán</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.QueQuan}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class = "mdi-communication-email"></i>
+                        </div>
+                       <div class="col-md-2">
+                            
+                            <b>Email</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.Email}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-maps-beenhere"></i>
+                       </div>
+                       <div class="col-md-2">
+                            <b>CMND</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.CMND}}
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <i class="mdi-action-work"></i>
+                        </div>
+                       <div class="col-md-2">
+                            
+                            <b>Tiểu Sử</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.TieuSu}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-hardware-laptop-chromebook"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Tòa Soạn</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hoivien_item.MaToaSoan}}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-action-done"></i>
+                       </div>
+                       <div class="col-md-2">
+                            <b>Kích Hoạt</b>
+                       </div>
+                       <div class="col-md-9">
+                            {% if hoivien_item.kichhoat == 1 %}
+                                Kích hoạt
+                            {% else %}
+                                Không kích hoạt
+                            {% endif %}
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-hardware-laptop-chromebook"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Tác phẩm</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hv_tacpham|length}} tác phẩm
+                       </div>
+                    </div>
+                    <div class="row">
+                       <div class="col-md-1">
+                            <i class="mdi-hardware-laptop-chromebook"></i>
+                       </div>
+                       <div class="col-md-2">
+                            
+                            <b>Giải thưởng</b>
+                       </div>
+                       <div class="col-md-9">
+                            {{hv_giaithuong|length}} giải thưởng
+                       </div>
+                    </div>
+                    
+                    {% if vaitro == "admin" %}
+                      <div class="row">
+                        <div class="col-md-1">
+                          <i class="mdi-av-playlist-add"></i>
+                        </div>
+                        <div class="col-md-10">
+                            
+                          
+                          <a href="{{path('project_giaithuong_add', {'tendangnhap': hoivien_item.TenDangNhap})}}">Thêm giải thưởng</a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1">
+                          <i class="mdi-av-playlist-add"></i>
+                        </div>
+                        <div class="col-md-10">
+                            
+                          <a href="{{path('project_tacpham_add', {'tendangnhap': hoivien_item.TenDangNhap})}}">Thêm tác phẩm</a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1">
+                          <i class="mdi-content-create"></i>
+                        </div>
+                        <div class="col-md-10">
+                            
+                          <a href="{{path('project_hoinhabao_edit',{'tendangnhap': hoivien_item.TenDangNhap})}}">Sửa thông tin</a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-1">
+                          <i class="mdi-action-delete"></i>
+                        </div>
+                        <div class="col-md-10">
+                            
+                          <form action="{{path('project_hoinhabao_delete',{'tendangnhap':hoivien_item.TenDangNhap})}}" method = "post">
+                              <a class="delete-hoivien">Xóa hội viên này</a>
+                          </form>
+                        </div>
+                      </div>
+                      
+                    {% elseif tendangnhap == hoivien_item.TenDangNhap %}
+                      <div class="row">
+                        <div class="col-md-1">
+                          <i class="mdi-content-create"></i>
+                        </div>
+                        <div class="col-md-10">
+                            
+                          <a href="{{path('project_hoinhabao_edit',{'tendangnhap': hoivien_item.TenDangNhap})}}">Sửa thông tin</a>
+                        </div>
+                      </div>
+                    {% endif %}
+                   
+                </div>
+                <div class="col-md-3">
+                    <div class="side-option">
+                        <div class="toolbar">
+                            <legend>Chức năng</legend>
+                        </div>
+                        <div class="content">
+                            {% include 'ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig' %}
+                        </div>
+                        <!--end content-->
+                        {% if (vaitro == "admin") or (tendangnhap == hoivien_item.TenDangNhap) %}
+                         <div class="toolbar">
+                            <legend>Đổi giao diện</legend>
+                        </div>
+                        <div class="change-template">
+                          {% include 'ProjectHoinhabaoBundle:Template:change_template.html.twig' %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ asset('bundles/projecthoinhabao/js/jquery-1.11.2.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/js/bootstrap.min.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/material/js/ripples.min.js') }}"></script>
+    <script src="{{asset('bundles/projecthoinhabao/material/js/material.min.js') }}"></script>
+    <script>
+      $('.delete-hoivien').click(function(){
+                
+        if(confirm("Bạn thật sự muốn xóa hội viên này?")){
+          var url      = window.location.href;
+          url += "/delete";
+          window.location = url;
+
+        }else{
+            location.reload();
+        }
+              
+      });
+      $('.mdi-content-add-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).show();
+            });
+            $('.mdi-content-remove-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).hide();
+            });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

@@ -12,7 +12,23 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class GiaithuongController extends Controller
 {
+     public function showQuantityAction($username, & $build){
     
+        $thishoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findOneByTendangnhap(''.$username.'');
+        $hoivien = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findByKichhoat('1');
+        $inactive = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Hoivien')->findByKichhoat('0');
+        $toanbotacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findAll();
+        $toanbogiaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findAll();
+        $tacpham = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Tacpham')->findByMahv(''.$thishoivien->getMahv().'');
+        $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findByMahv(''.$thishoivien->getMahv().'');
+        $build['hoivien'] = $hoivien;
+        $build['toanbotacpham'] = $toanbotacpham;
+        $build['toanbogiaithuong'] = $toanbogiaithuong;
+        $build['tacpham'] = $tacpham;
+        $build['giaithuong'] = $giaithuong;
+        $build['inactive'] = $inactive;
+    }
+
     public function indexAction()
     {
         $session = new Session();
@@ -27,11 +43,31 @@ class GiaithuongController extends Controller
         
         $build['tendangnhap'] = $username;
         $build['vaitro'] = $session->get('vaitro');
-        $build['giaithuong'] = $giaithuong;
+        $build['i_giaithuong'] = $giaithuong;
+        $this->showQuantityAction($username, $build);
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_show_all.html.twig', $build);
     
     }
-    public function addAction(Request $request){
+
+    public function allAction()
+    {
+        $session = new Session();
+        $session->start();
+        $username = $session->get('tendangnhap');
+        if(!$username){
+            return $this->redirectToRoute('project_login');
+        }
+       
+        $giaithuong = $this->getDoctrine()->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findAll();
+        
+        $build['tendangnhap'] = $username;
+        $build['vaitro'] = $session->get('vaitro');
+        $build['all_giaithuong'] = $giaithuong;
+        $this->showQuantityAction($username, $build);
+        return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_all.html.twig', $build);
+    
+    }
+    public function addAction($tendangnhap, Request $request){
         $session = $request->getSession();
         $username = $session->get('tendangnhap');
         if(!$username){
@@ -65,16 +101,18 @@ class GiaithuongController extends Controller
         	$em = $this->getDoctrine()->getManager();
         	$em->persist($giaithuong);
         	$em->flush();
-        	return new Response("<p>Thêm giải thưởng thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
+        	$this->addFlash('add-giaithuong', 'Giải thưởng được thêm thành công');
+            return $this->redirectToRoute('project_giaithuong', array('tendangnhap'=> $tendangnhap));
         }
 
         $build['form'] = $form->createView();
         $build['tendangnhap'] = $username;
         $build['vaitro'] = $session->get('vaitro');
+        $this->showQuantityAction($username, $build);
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
-   public function editAction($magiaithuong, Request $request){
+   public function editAction($tendangnhap, $magiaithuong, Request $request){
         $session = $request->getSession();
         $username = $session->get('tendangnhap');
         if(!$username){
@@ -110,12 +148,14 @@ class GiaithuongController extends Controller
         if($form->isValid()){
             
             $em->flush();
-            return new Response("<p>Giải thưởng được cập nhật thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
+            $this->addFlash('edit-giaithuong', 'Giải thưởng '.$magiaithuong.' được cập nhật thành công');
+            return $this->redirectToRoute('project_giaithuong', array('tendangnhap'=> $tendangnhap));
         }
 
         $build['form'] = $form->createView();
         $build['tendangnhap'] = $username;
-        $build['hoivien'] = $session->get('vaitro');
+        $build['vaitro'] = $session->get('vaitro');
+        $this->showQuantityAction($username, $build);
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
@@ -146,29 +186,34 @@ class GiaithuongController extends Controller
         $build['form'] = $form->createView();
         $build['tendangnhap'] = $username;
         $build['vaitro'] = $session->get('vaitro');
+        $this->showQuantityAction($username, $build);
         return $this->render('ProjectHoinhabaoBundle:Giaithuong:giaithuong_add.html.twig', $build);
     }
 
 
-    public function multideleteAction(Request $request){
+   public function multideleteAction($tendangnhap, Request $request){
         $session = $request->getSession();
         $username = $session->get('tendangnhap');
         if(!$username){
             return $this->redirectToRoute('project_login');
         }
         if(empty($_POST['xoa'])){
-          throw $this->createNotFoundException(
-                  'Không có giải thưởng nào được chọn'
-          );  
+          return $this->redirectToRoute('project_giaithuong', array('tendangnhap'=> $tendangnhap));
         }
         else{
            foreach ($_POST['xoa'] as $checked){
                $em = $this->getDoctrine()->getManager();
                $giaithuong = $em->getRepository('ProjectHoinhabaoBundle:Giaithuong')->findOneByMagiaithuong(''.$checked.'');
-               $em->remove($giaithuong);
-                $em->flush(); 
-            }
-            return new Response("<p>Xóa thành công</p><a href='http://localhost/BTL/web/app_dev.php/hoivien'>Trang chủ</a>");
+                $em->remove($giaithuong);
+                $em->flush();
+            } 
         }
+    
+        $this->addFlash('delete-multi', 'Xóa thành công');
+       return $this->redirectToRoute('project_giaithuong', array('tendangnhap'=> $tendangnhap));
+           
+        
     }
+
+
 }

@@ -18,45 +18,18 @@
         .hoivien-info{
             font-size: 16px;
         }
+         .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{path('project_hoinhabao_homepage')}}">Trang Chủ</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                        <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <ul class="dropdown-menu">
-                      
-                        <li><a href="{{path('project_hoinhabao_edit', {'tendangnhap':tendangnhap})}}">Thông tin cá nhân</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{{path('project_logout')}}">Thoát</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% include 'ProjectHoinhabaoBundle:Template:header.html.twig' %}
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -66,33 +39,18 @@
                             <legend>Chức năng</legend>
                         </div>
                         <div class="content">
-                            <ul>
-                                <li>
-                                    <i class="mdi-image-filter-none"></i>
-                                    <a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Thông tin hội viên</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_tacpham', {'tendangnhap':tendangnhap})}}">Danh sách tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_giaithuong', {'tendangnhap':tendangnhap})}}">Danh sách giải thưởng</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-content-create"></i>
-                                    <a href="{{path('project_tacpham_edit',{'tendangnhap':tendangnhap, 'matacpham':tacpham_item.matacpham})}}">Sửa thông tin tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class="mdi-action-delete"></i>
-                                    <a href="{{path('project_tacpham_delete',{'tendangnhap':tendangnhap, 'matacpham':tacpham_item.matacpham})}}">Xóa tác phẩm</a>
-                                </li>
-
-                            </ul>
+                            {% include 'ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig' %}
                         </div>
+                        <!--end content-->
                     </div>
                 </div>
                 <div class="col-md-9 hoivien-info" style="border-left: 2px solid red;">
+                   {% for flashMessageb in app.session.flashbag.get('edit-tacpham') %}
+                         <div class="alert alert-dismissable alert-success">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ flashMessageb }}
+                        </div>
+                    {% endfor %}
                    <h3>Thông tin tác phẩm</h3>
                    <div class="row">
                        <div class = "col-md-1">
@@ -186,6 +144,33 @@
     <script src="{{asset('bundles/projecthoinhabao/js/bootstrap.min.js') }}"></script>
     <script src="{{asset('bundles/projecthoinhabao/material/js/ripples.min.js') }}"></script>
     <script src="{{asset('bundles/projecthoinhabao/material/js/material.min.js') }}"></script>
+    <script>
+       $('.delete-tacpham').click(function(){
+                
+        if(confirm("Bạn thật sự muốn xóa tác phẩm này?")){
+          var url      = window.location.href;
+          url += "/delete";
+          window.location = url;
+
+        }else{
+            location.reload();
+        }
+              
+      });
+
+       $('.mdi-content-add-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).show();
+            });
+            $('.mdi-content-remove-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).hide();
+            });
+    </script>
 </body>
 
 </html>

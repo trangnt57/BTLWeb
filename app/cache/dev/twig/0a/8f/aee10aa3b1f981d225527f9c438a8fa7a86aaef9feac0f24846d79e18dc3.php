@@ -47,57 +47,22 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
         ul{
             list-style: none;
         }
+        .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class=\"navbar navbar-default\">
-        <div class=\"navbar-header\">
-            <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-responsive-collapse\">
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-            </button>
-        </div>
-        <div class=\"navbar-collapse collapse navbar-responsive-collapse\">
-            <ul class=\"nav navbar-nav\">
-                <li><a href=\"";
-        // line 32
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
-        echo "\">Trang Chủ</a>
-                </li>
-            </ul>
-            <ul class=\"nav navbar-nav navbar-right\">
-                
-                <li class=\"dropdown\">
-                    <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
-                        <p style=\"margin: 0px; padding: 0px;\">
-                            <img class=\"row-avatar\" src=\"";
-        // line 40
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
-        echo "\" alt=\"icon\">";
-        echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
-        echo "
-                            <b class=\"caret\"></b>
-                        </p>
-                    </a>
-                    <ul class=\"dropdown-menu\">
-                      
-                        <li><a href=\"\">Sửa thông tin cá nhân</a>
-                        </li>
-                        <li class=\"divider\"></li>
-                        <li><a href=\"";
-        // line 49
-        echo $this->env->getExtension('routing')->getPath("project_logout");
-        echo "\">Thoát</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class=\"container\">
+    ";
+        // line 28
+        $this->env->loadTemplate("ProjectHoinhabaoBundle:Template:header.html.twig")->display($context);
+        // line 29
+        echo "    <div class=\"container\">
         <div class=\"jumbotron\">
             <div class=\"row\">
                 <div class=\"col-md-3\">
@@ -106,69 +71,77 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                             <legend>Chức năng</legend>
                         </div>
                         <div class=\"content\">
-                            <ul>
-                                ";
-        // line 66
-        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-            // line 67
-            echo "                                    <li>
-                                        <i class=\"mdi-social-person-add\"></i>
-                                        <a href=\"";
-            // line 69
-            echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
-            echo "\">Thêm hội viên</a>
-                                    </li>
-                                ";
-        }
-        // line 72
-        echo "                                <li>
-                                    <i class=\"mdi-action-list\"></i>
-                                    <a href=\"";
-        // line 74
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
-        echo "\">Danh sách hội viên</a>
-                                </li>
-                                ";
-        // line 76
-        if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-            // line 77
-            echo "                                    <li>
-                                        <i class=\"mdi-image-filter-none\"></i>
-                                        <a href=\"";
-            // line 79
-            echo $this->env->getExtension('routing')->getPath("project_hoinhabao_report");
-            echo "\">Báo cáo</a>
-                                    </li>
-                                ";
-        }
-        // line 82
-        echo "                            </ul>
-                        </div>
+                            ";
+        // line 38
+        $this->env->loadTemplate("ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig")->display($context);
+        // line 39
+        echo "                        </div>
+                        <!--end content-->
                     </div>
                     
                 </div>
                 <div class=\"col-md-9\" style=\"border-left: 2px solid red; text-align: center;\">
+                  
+                    ";
+        // line 46
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "delete-multi"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
+            // line 47
+            echo "                         <div class=\"alert alert-dismissable alert-success\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                            ";
+            // line 49
+            echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 52
+        echo "                    ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "delete-hoivien"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessageh"]) {
+            // line 53
+            echo "                         <div class=\"alert alert-dismissable alert-success\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                            ";
+            // line 55
+            echo twig_escape_filter($this->env, $context["flashMessageh"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessageh'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 58
+        echo "
+                  
                     <h3>DANH SÁCH HỘI VIÊN</h3>
                     <div class=\"row\">
                         <div class=\"col-md-9\"></div>
                         ";
-        // line 91
+        // line 63
         if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-            // line 92
+            // line 64
             echo "                            <div class=\"col-md-3\" style=\"font-size:20px\">
                                 <i class=\"mdi-social-person-add\" style=\"color:blue\"></i>
                                 <a href=\"";
-            // line 94
+            // line 66
             echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
             echo "\">Thêm hội viên </a>
                             </div>
                         ";
         }
-        // line 97
+        // line 69
         echo "                    </div>
 
                      <form action=\"";
-        // line 99
+        // line 71
         echo $this->env->getExtension('routing')->getPath("project_hoivien_multidelete");
         echo "\" method=\"post\">
                             
@@ -181,37 +154,40 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                 <th>Họ Tên</th>
                                
                                 <th>Email</th>
-                                <th>CMND</th>
+                                <th>Kích hoạt</th>
                                 ";
-        // line 111
+        // line 83
         if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-            // line 112
+            // line 84
             echo "                                    <th name=\"delete\">
-                                        xóa
+                                        <button type='submit'  name='deletehoivien' class=\"btn btn-primary delete-multi-hoivien\">
+                                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
+                                        
+                                        </button>
                                     </th>
                                 ";
         }
-        // line 116
+        // line 91
         echo "                            </tr>
                         </thead>
                         <tbody>
 
                             ";
-        // line 120
+        // line 95
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["hoivien"]) ? $context["hoivien"] : $this->getContext($context, "hoivien")));
         foreach ($context['_seq'] as $context["_key"] => $context["eachhoivien"]) {
-            // line 121
+            // line 96
             echo "                                <tr>
                                     <td>
                                         ";
-            // line 123
+            // line 98
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "MaHV", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         <a href=\"";
-            // line 126
+            // line 101
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "TenDangNhap", array()), "html", null, true);
@@ -219,7 +195,7 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                     </td>
                                     <td>
                                         ";
-            // line 129
+            // line 104
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "HoTen", array()), "html", null, true);
             echo "
                                     </td>
@@ -227,25 +203,33 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                     
                                     <td>
                                         ";
-            // line 134
+            // line 109
             echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Email", array()), "html", null, true);
             echo "
                                     </td>
                                     <td>
                                         ";
-            // line 137
-            echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "CMND", array()), "html", null, true);
-            echo "
-                                    </td>
+            // line 112
+            if (($this->getAttribute($context["eachhoivien"], "KichHoat", array()) == 1)) {
+                // line 113
+                echo "                                            Kích hoạt
+                                        ";
+            } else {
+                // line 115
+                echo "                                            Chưa kích hoạt
+                                        ";
+            }
+            // line 117
+            echo "                                    </td>
                                     ";
-            // line 139
+            // line 118
             if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-                // line 140
+                // line 119
                 echo "                                        <td>
                                             <div class=\"checkbox\">
                                                 <label>
                                                     <input type='checkbox' name='xoa[]' value='";
-                // line 143
+                // line 122
                 echo twig_escape_filter($this->env, $this->getAttribute($context["eachhoivien"], "Mahv", array()), "html", null, true);
                 echo "'>
                                                 </label>
@@ -254,29 +238,29 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
                                         </td>
                                     ";
             }
-            // line 149
+            // line 128
             echo "                                </tr>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['eachhoivien'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 151
+        // line 130
         echo "                            
                         </tbody>
                         
                     </table>   
                     ";
-        // line 155
+        // line 134
         if (((isset($context["vaitro"]) ? $context["vaitro"] : $this->getContext($context, "vaitro")) == "admin")) {
-            // line 156
-            echo "                        <button type='submit'  name='deletehoivien' class=\"btn btn-primary\">
-                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
-                        
+            // line 135
+            echo "                        <button type='submit'  name='deletehoivien' class=\"btn btn-primary select-all\">
+                           Xóa Toàn Bộ
+                                        
                         </button>
                     ";
         }
-        // line 161
+        // line 140
         echo "                </form>
                  
             </div>
@@ -284,28 +268,56 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
     </div>
     
     <script src=\"";
-        // line 167
+        // line 146
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 168
+        // line 147
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 169
+        // line 148
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 170
+        // line 149
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 171
+        // line 150
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script>
         \$(document).ready(function() {
             \$('#table-hoivien').DataTable();
+
+            \$('.select-all').click(function(){
+                 \$('input[name=\"xoa[]\"]').attr('checked', true);
+            });
+            \$('form').submit(function(){
+                var atLeastOneIsChecked = \$('input[name=\"xoa[]\"]:checked').length;
+                if(atLeastOneIsChecked == 0)
+                    alert('Chưa có hội viên nào được chọn.');
+                else{
+                    if(confirm(\"Bạn thật sự muốn xóa hội viên này?\")){
+
+                    }else{
+                        \$('input[name=\"xoa[]\"]').attr('checked', false);
+                    }
+                }
+            });
+            \$('.mdi-content-add-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).show();
+            });
+            \$('.mdi-content-remove-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).hide();
+            });
         } );
     </script>
 
@@ -335,6 +347,6 @@ class __TwigTemplate_0a8faee10aa3b1f981d225527f9c438a8fa7a86aaef9feac0f24846d79e
 
     public function getDebugInfo()
     {
-        return array (  304 => 171,  300 => 170,  296 => 169,  292 => 168,  288 => 167,  280 => 161,  273 => 156,  271 => 155,  265 => 151,  258 => 149,  249 => 143,  244 => 140,  242 => 139,  237 => 137,  231 => 134,  223 => 129,  215 => 126,  209 => 123,  205 => 121,  201 => 120,  195 => 116,  189 => 112,  187 => 111,  172 => 99,  168 => 97,  162 => 94,  158 => 92,  156 => 91,  145 => 82,  139 => 79,  135 => 77,  133 => 76,  128 => 74,  124 => 72,  118 => 69,  114 => 67,  112 => 66,  92 => 49,  78 => 40,  67 => 32,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  288 => 150,  284 => 149,  280 => 148,  276 => 147,  272 => 146,  264 => 140,  257 => 135,  255 => 134,  249 => 130,  242 => 128,  233 => 122,  228 => 119,  226 => 118,  223 => 117,  219 => 115,  215 => 113,  213 => 112,  207 => 109,  199 => 104,  191 => 101,  185 => 98,  181 => 96,  177 => 95,  171 => 91,  162 => 84,  160 => 83,  145 => 71,  141 => 69,  135 => 66,  131 => 64,  129 => 63,  122 => 58,  113 => 55,  109 => 53,  104 => 52,  95 => 49,  91 => 47,  87 => 46,  78 => 39,  76 => 38,  65 => 29,  63 => 28,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

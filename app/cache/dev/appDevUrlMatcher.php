@@ -150,9 +150,35 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::indexAction',  '_route' => 'project_hoinhabao_homepage',);
             }
 
-            // project_hoinhabao_add
-            if ($pathinfo === '/hoivien/add') {
-                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::addAction',  '_route' => 'project_hoinhabao_add',);
+            if (0 === strpos($pathinfo, '/hoivien/a')) {
+                // project_hoinhabao_add
+                if ($pathinfo === '/hoivien/add') {
+                    return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::addAction',  '_route' => 'project_hoinhabao_add',);
+                }
+
+                if (0 === strpos($pathinfo, '/hoivien/all')) {
+                    // project_giaithuong_all
+                    if ($pathinfo === '/hoivien/allgiaithuong') {
+                        return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\GiaithuongController::allAction',  '_route' => 'project_giaithuong_all',);
+                    }
+
+                    // project_tacpham_all
+                    if ($pathinfo === '/hoivien/alltacpham') {
+                        return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\TacphamController::allAction',  '_route' => 'project_tacpham_all',);
+                    }
+
+                }
+
+            }
+
+            // project_hoinhabao_inactive
+            if ($pathinfo === '/hoivien/inactive') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::inactiveAction',  '_route' => 'project_hoinhabao_inactive',);
+            }
+
+            // project_hoinhabao_active
+            if ($pathinfo === '/hoivien/active') {
+                return array (  '_controller' => 'Project\\HoinhabaoBundle\\Controller\\HoivienController::activeAction',  '_route' => 'project_hoinhabao_active',);
             }
 
             // project_hoinhabao_report

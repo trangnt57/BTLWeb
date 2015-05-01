@@ -39,3 +39,6 @@ div.divider {
 .none-margin-top {
 	margin-top: 0;
 }
+.content{
+    margin-left: -10px;
+}

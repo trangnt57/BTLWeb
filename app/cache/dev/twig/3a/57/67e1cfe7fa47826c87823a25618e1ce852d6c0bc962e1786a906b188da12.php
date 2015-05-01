@@ -50,6 +50,12 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
         .mdi-editor-mode-edit{
             font-size: 20px;
         }
+        .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
@@ -66,7 +72,7 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
         <div class=\"navbar-collapse collapse navbar-responsive-collapse\">
             <ul class=\"nav navbar-nav\">
                 <li><a href=\"";
-        // line 35
+        // line 41
         echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
         echo "\">Trang Chủ</a>
                 </li>
@@ -77,7 +83,7 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
                             <img class=\"row-avatar\" src=\"";
-        // line 43
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
         echo "\" alt=\"icon\">";
         echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
@@ -88,13 +94,13 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                     <ul class=\"dropdown-menu\">
                       
                         <li><a href=\"";
-        // line 49
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Thông tin cá nhân</a>
+        // line 55
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
+        echo "\">Trang cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
                         <li><a href=\"";
-        // line 52
+        // line 58
         echo $this->env->getExtension('routing')->getPath("project_logout");
         echo "\">Thoát</a>
                         </li>
@@ -111,64 +117,86 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                         <div class=\"toolbar\">
                             <legend>Chức năng</legend>
                         </div>
-                        <div class=\"content\">
-                            <ul>
-                                <li>
-                                    <i class=\"mdi-av-playlist-add\"></i>
-                                    <a href=\"";
-        // line 71
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong_add", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Thêm giải thưởng</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-av-playlist-add\"></i>
-                                    <a href=\"";
+                         <div class=\"content\">
+                            ";
+        // line 74
+        $this->env->loadTemplate("ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig")->display($context);
         // line 75
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham_add", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Thêm tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-action-list\"></i>
-                                    <a href=\"";
-        // line 79
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_tacpham", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Danh sách tác phẩm</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-action-list\"></i>
-                                    <a href=\"";
-        // line 83
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Danh sách giải thưởng</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-image-filter-none\"></i>
-                                    <a href=\"";
-        // line 87
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
-        echo "\">Thông tin cá nhân</a>
-                                </li>
-                            </ul>
-                        </div>
+        echo "                        </div>
+                        <!--end content-->
                     </div>
                 </div>
                 <div class=\"col-md-9\" style=\"border-left: 2px solid red; text-align: center;\">
-                    
-                    <div class=\"danhsachgiaithuong\" style=\"background:\">
+                    ";
+        // line 80
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "delete-multi"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
+            // line 81
+            echo "                         <div class=\"alert alert-dismissable alert-success\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                            ";
+            // line 83
+            echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 86
+        echo "                    ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "add-giaithuong"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessagea"]) {
+            // line 87
+            echo "                         <div class=\"alert alert-dismissable alert-success\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                            ";
+            // line 89
+            echo twig_escape_filter($this->env, $context["flashMessagea"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessagea'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 92
+        echo "                    ";
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "edit-giaithuong"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["flashMessageb"]) {
+            // line 93
+            echo "                         <div class=\"alert alert-dismissable alert-success\">
+                            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>
+                            ";
+            // line 95
+            echo twig_escape_filter($this->env, $context["flashMessageb"], "html", null, true);
+            echo "
+                        </div>
+                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessageb'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 98
+        echo "                    <div class=\"danhsachgiaithuong\" style=\"background:\">
                         <h3>DANH SÁCH GIẢI THƯỞNG</h3>
                         <div class=\"row\">
                             <div class=\"col-md-9\"></div>
                             <div class=\"col-md-3\" style=\"font-size:20px\">
                                 <i class=\"mdi-av-playlist-add\" style=\"color:blue\"></i>
                                 <a href=\"";
-        // line 101
+        // line 104
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong_add", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\">Thêm giải thưởng </a>
                             </div>
                         </div>
 
                         <form action=\"";
-        // line 105
+        // line 108
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong_multidelete", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
         echo "\" method=\"post\">
                         <table id=\"table-giaithuong\" class=\"table table-striped table-bordered\" cellspacing=\"0\" width=\"100%\">
@@ -177,10 +205,12 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                                 <tr>
                                     <th>Mã Giải Thưởng</th>
                                     <th>Tên Giải Thưởng</th>
-                                    <th>Tác Phẩm Đạt Giải</th>
                                     <th>Ngày Đạt Giải</th>
                                     <th name=\"delete\">
-                                        Xóa
+                                       <button type='submit'  name='deletetacpham' class=\"btn btn-primary delete-multi-tacpham\">
+                                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
+                                        
+                                        </button>
                                        
                                     </th>
                                     <th>
@@ -190,33 +220,27 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                             </thead>
                             <tbody>
                                 ";
-        // line 124
+        // line 129
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["giaithuong"]) ? $context["giaithuong"] : $this->getContext($context, "giaithuong")));
+        $context['_seq'] = twig_ensure_traversable((isset($context["i_giaithuong"]) ? $context["i_giaithuong"] : $this->getContext($context, "i_giaithuong")));
         foreach ($context['_seq'] as $context["_key"] => $context["gt"]) {
-            // line 125
+            // line 130
             echo "                                    <tr>
                                         <td>
                                             ";
-            // line 127
+            // line 132
             echo twig_escape_filter($this->env, $this->getAttribute($context["gt"], "MaGiaiThuong", array()), "html", null, true);
             echo "
                                         </td>
                                         <td>
                                             ";
-            // line 130
+            // line 135
             echo twig_escape_filter($this->env, $this->getAttribute($context["gt"], "TenGiaiThuong", array()), "html", null, true);
             echo "
                                         </td>
                                         <td>
                                             ";
-            // line 133
-            echo twig_escape_filter($this->env, $this->getAttribute($context["gt"], "MaTacPham", array()), "html", null, true);
-            echo "
-                                        </td>
-                                        <td>
-                                            ";
-            // line 136
+            // line 138
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["gt"], "NgayDatGiai", array()), "Y-m-d"), "html", null, true);
             echo "
                                         </td>
@@ -224,7 +248,7 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                                             <div class=\"checkbox\">
                                                 <label>
                                                     <input type='checkbox' name='xoa[]' value='";
-            // line 141
+            // line 143
             echo twig_escape_filter($this->env, $this->getAttribute($context["gt"], "MaGiaiThuong", array()), "html", null, true);
             echo "'>
                                                 </label>
@@ -232,7 +256,7 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
                                         </td>
                                         <td>
                                             <a href=\"";
-            // line 146
+            // line 148
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_giaithuong_edit", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "magiaithuong" => $this->getAttribute($context["gt"], "MaGiaiThuong", array()))), "html", null, true);
             echo "\">
                                                 <i class=\"mdi-editor-mode-edit\"></i>
@@ -244,14 +268,14 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['gt'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 152
+        // line 154
         echo "                                
                             </tbody>
                             
                         </table>
-                        <button type='submit'  name='deletegiaithuong' class=\"btn btn-primary\">
-                        
-                            <i class=\"mdi-action-delete\" style=\"font-size: 20px; padding-left: 3px; padding-right: 3px;\"></i>
+                        <button type='submit'  name='deletehoivien' class=\"btn btn-primary select-all\">
+                           Xóa Toàn Bộ
+                                        
                         </button>
                         </form>   
                     </div>
@@ -262,23 +286,23 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
     </div>
     
     <script src=\"";
-        // line 168
+        // line 170
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 169
+        // line 171
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 170
+        // line 172
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 171
+        // line 173
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 172
+        // line 174
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -286,6 +310,34 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
             
             \$('#table-giaithuong').DataTable();
         } );
+
+        \$('.select-all').click(function(){
+            \$('input[name=\"xoa[]\"]').attr('checked', true);
+        });
+        \$('form').submit(function(){
+            var atLeastOneIsChecked = \$('input[name=\"xoa[]\"]:checked').length;
+            if(atLeastOneIsChecked == 0)
+                alert('Chưa có giải thưởng nào được chọn.');
+            else{
+                if(confirm(\"Bạn thật sự muốn xóa giải thưởng này?\")){
+
+                }else{
+                    \$('input[name=\"xoa[]\"]').attr('checked', false);
+                }
+            }
+        });
+        \$('.mdi-content-add-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).show();
+            });
+            \$('.mdi-content-remove-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).hide();
+            });
     </script>
 
 </body>
@@ -321,6 +373,6 @@ class __TwigTemplate_3a5767e1cfe7fa47826c87823a25618e1ce852d6c0bc962e1786a906b18
 
     public function getDebugInfo()
     {
-        return array (  282 => 172,  278 => 171,  274 => 170,  270 => 169,  266 => 168,  248 => 152,  236 => 146,  228 => 141,  220 => 136,  214 => 133,  208 => 130,  202 => 127,  198 => 125,  194 => 124,  172 => 105,  165 => 101,  148 => 87,  141 => 83,  134 => 79,  127 => 75,  120 => 71,  98 => 52,  92 => 49,  81 => 43,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  306 => 174,  302 => 173,  298 => 172,  294 => 171,  290 => 170,  272 => 154,  260 => 148,  252 => 143,  244 => 138,  238 => 135,  232 => 132,  228 => 130,  224 => 129,  200 => 108,  193 => 104,  185 => 98,  176 => 95,  172 => 93,  167 => 92,  158 => 89,  154 => 87,  149 => 86,  140 => 83,  136 => 81,  132 => 80,  125 => 75,  123 => 74,  104 => 58,  98 => 55,  87 => 49,  76 => 41,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

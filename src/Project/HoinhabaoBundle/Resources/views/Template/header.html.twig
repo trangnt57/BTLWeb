@@ -1,0 +1,40 @@
+<div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{path('project_hoinhabao_homepage')}}">Hội nhà báo VN</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                   
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" data-target="#" aria-expanded="true">
+                        <p style="margin: 0px; padding: 0px;">
+                            {% if vaitro == "admin" %}
+                                <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
+                                <b class="caret"></b>
+                            {% else %}
+                                <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/avatar.png') }}" alt="icon">{{tendangnhap}}
+                                <b class="caret"></b>
+                            {% endif %}
+                        </p>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                        <li><a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Trang cá nhân</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{path('project_logout')}}">Thoát</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>

@@ -50,6 +50,12 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
         .thongke-soluong{
             font-size: 14px;
         }
+         .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
@@ -66,7 +72,7 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
         <div class=\"navbar-collapse collapse navbar-responsive-collapse\">
             <ul class=\"nav navbar-nav\">
                 <li><a href=\"";
-        // line 35
+        // line 41
         echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
         echo "\">Trang Chủ</a>
                 </li>
@@ -77,18 +83,26 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
                     <a href=\"javascript:void(0)\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
                         <p style=\"margin: 0px; padding: 0px;\">
                             <img class=\"row-avatar\" src=\"";
-        // line 43
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/images/ava.png"), "html", null, true);
-        echo "\" alt=\"icon\">Admin
+        echo "\" alt=\"icon\">";
+        echo twig_escape_filter($this->env, (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")), "html", null, true);
+        echo "
                             <b class=\"caret\"></b>
                         </p>
                     </a>
                     <ul class=\"dropdown-menu\">
                       
-                        <li><a href=\"\">Sửa thông tin cá nhân</a>
+                        <li><a href=\"";
+        // line 55
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => (isset($context["tendangnhap"]) ? $context["tendangnhap"] : $this->getContext($context, "tendangnhap")))), "html", null, true);
+        echo "\">Trang cá nhân</a>
                         </li>
                         <li class=\"divider\"></li>
-                        <li><a href=\"javascript:void(0)\">Thoát</a>
+                        <li><a href=\"";
+        // line 58
+        echo $this->env->getExtension('routing')->getPath("project_logout");
+        echo "\">Thoát</a>
                         </li>
                     </ul>
                 </li>
@@ -104,55 +118,37 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
                             <legend>Chức năng</legend>
                         </div>
                         <div class=\"content\">
-                            <ul>
-                                <li>
-                                    <i class=\"mdi-social-person-add\"></i>
-                                    <a href=\"";
-        // line 71
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_add");
-        echo "\">Thêm hội viên</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-action-list\"></i>
-                                    <a href=\"";
+                            ";
+        // line 74
+        $this->env->loadTemplate("ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig")->display($context);
         // line 75
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_homepage");
-        echo "\">Danh sách hội viên</a>
-                                </li>
-                                <li>
-                                    <i class=\"mdi-image-filter-none\"></i>
-                                    <a href=\"";
-        // line 79
-        echo $this->env->getExtension('routing')->getPath("project_hoinhabao_report");
-        echo "\">Báo cáo</a>
-                                </li>
-                            </ul>
-                        </div>
+        echo "                        </div>
+                        <!--end content-->
                     </div>
                 </div>
                 <div class=\"col-md-9\" style=\"border-left: 2px solid red; \">
                     <h3>Thống kê</h3>
                     <ul class=\"thongke-soluong\">
                        ";
-        // line 88
-        $context["tongsohoivien"] = twig_length_filter($this->env, (isset($context["hoivien"]) ? $context["hoivien"] : $this->getContext($context, "hoivien")));
-        // line 89
+        // line 82
+        $context["tongsohoivien"] = twig_length_filter($this->env, (isset($context["R_hoivien"]) ? $context["R_hoivien"] : $this->getContext($context, "R_hoivien")));
+        // line 83
         echo "                        <li><b>Tổng số hội viên:</b> ";
         echo twig_escape_filter($this->env, (isset($context["tongsohoivien"]) ? $context["tongsohoivien"] : $this->getContext($context, "tongsohoivien")), "html", null, true);
         echo "</li>
 
                         ";
-        // line 91
-        $context["tongsotacpham"] = twig_length_filter($this->env, (isset($context["tacpham"]) ? $context["tacpham"] : $this->getContext($context, "tacpham")));
-        // line 92
+        // line 85
+        $context["tongsotacpham"] = twig_length_filter($this->env, (isset($context["R_tacpham"]) ? $context["R_tacpham"] : $this->getContext($context, "R_tacpham")));
+        // line 86
         echo "                        <li><b>Tổng số tác phẩm:</b> ";
         echo twig_escape_filter($this->env, (isset($context["tongsotacpham"]) ? $context["tongsotacpham"] : $this->getContext($context, "tongsotacpham")), "html", null, true);
         echo "</li>
 
                         ";
-        // line 94
-        $context["tongsogiaithuong"] = twig_length_filter($this->env, (isset($context["giaithuong"]) ? $context["giaithuong"] : $this->getContext($context, "giaithuong")));
-        // line 95
+        // line 88
+        $context["tongsogiaithuong"] = twig_length_filter($this->env, (isset($context["R_giaithuong"]) ? $context["R_giaithuong"] : $this->getContext($context, "R_giaithuong")));
+        // line 89
         echo "                        <li><b>Tổng số giải thưởng:</b> ";
         echo twig_escape_filter($this->env, (isset($context["tongsogiaithuong"]) ? $context["tongsogiaithuong"] : $this->getContext($context, "tongsogiaithuong")), "html", null, true);
         echo "</li>
@@ -175,27 +171,27 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
                                 <th>Chi tiết</th>
                             </tr>
                             ";
-        // line 114
+        // line 108
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["thongketheotoasoan"]) ? $context["thongketheotoasoan"] : $this->getContext($context, "thongketheotoasoan")));
         foreach ($context['_seq'] as $context["_key"] => $context["tk"]) {
-            // line 115
+            // line 109
             echo "                               <tr>
                                     <td>";
-            // line 116
+            // line 110
             echo twig_escape_filter($this->env, $this->getAttribute($context["tk"], "toasoan", array()), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 117
-            echo twig_escape_filter($this->env, twig_length_filter($this->env, $context["tk"]), "html", null, true);
+            // line 111
+            echo twig_escape_filter($this->env, twig_length_filter($this->env, $this->getAttribute($context["tk"], "hoivien", array())), "html", null, true);
             echo "</td>
                                     <td>
                                         ";
-            // line 119
+            // line 113
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($context["tk"], "hoivien", array()));
             foreach ($context['_seq'] as $context["_key"] => $context["hoivien_iteam"]) {
-                // line 120
+                // line 114
                 echo "                                             <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("project_hoinhabao_show", array("tendangnhap" => $this->getAttribute($context["hoivien_iteam"], "TenDangNhap", array()))), "html", null, true);
                 echo "\">";
@@ -207,7 +203,7 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['hoivien_iteam'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 123
+            // line 117
             echo "                                    </td>
                                </tr>
 
@@ -216,7 +212,7 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tk'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 127
+        // line 121
         echo "                        </table>
                     </div>
                 </div>
@@ -225,27 +221,27 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
     </div>
     
     <script src=\"";
-        // line 134
+        // line 128
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery-1.11.2.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 135
+        // line 129
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 136
+        // line 130
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/ripples.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 137
+        // line 131
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/material/js/material.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 138
+        // line 132
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/jquery.dataTables.min.js"), "html", null, true);
         echo "\"></script>
      <script src=\"";
-        // line 139
+        // line 133
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/projecthoinhabao/js/Chart.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -253,16 +249,16 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
         var datagt = new Array();
         var labelJ = new Array();
         for(var i = 0; i < ";
-        // line 144
+        // line 138
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo"))), "html", null, true);
         echo "; i++ ){
             var bieudo = ";
-        // line 145
+        // line 139
         echo twig_jsonencode_filter((isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo")));
         echo ";
         }
         for(var i = 0; i < ";
-        // line 147
+        // line 141
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["bieudo"]) ? $context["bieudo"] : $this->getContext($context, "bieudo"))), "html", null, true);
         echo "; i++ ){
             labelJ[i] = bieudo[i]['tendangnhap'];
@@ -296,6 +292,19 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
             ]
         };
     var myLine = new Chart(document.getElementById(\"myChart\").getContext(\"2d\")).Line(data, {bezierCurve: true});
+
+     \$('.mdi-content-add-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).show();
+            });
+            \$('.mdi-content-remove-circle-outline').click(function(){
+                \$(this).hide();
+                \$(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = \$(this).attr('class').split(' ')[1];
+                \$('#'+ thisid).hide();
+            });
     </script>
 
 </body>
@@ -329,6 +338,6 @@ class __TwigTemplate_4bec63469119f708b4d1a1c6edcf75e35c1023a9152294415381ea3a52e
 
     public function getDebugInfo()
     {
-        return array (  266 => 147,  261 => 145,  257 => 144,  249 => 139,  245 => 138,  241 => 137,  237 => 136,  233 => 135,  229 => 134,  220 => 127,  211 => 123,  199 => 120,  195 => 119,  190 => 117,  186 => 116,  183 => 115,  179 => 114,  156 => 95,  154 => 94,  148 => 92,  146 => 91,  140 => 89,  138 => 88,  126 => 79,  119 => 75,  112 => 71,  81 => 43,  70 => 35,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
+        return array (  262 => 141,  257 => 139,  253 => 138,  245 => 133,  241 => 132,  237 => 131,  233 => 130,  229 => 129,  225 => 128,  216 => 121,  207 => 117,  195 => 114,  191 => 113,  186 => 111,  182 => 110,  179 => 109,  175 => 108,  152 => 89,  150 => 88,  144 => 86,  142 => 85,  136 => 83,  134 => 82,  125 => 75,  123 => 74,  104 => 58,  98 => 55,  87 => 49,  76 => 41,  41 => 9,  37 => 8,  33 => 7,  29 => 6,  25 => 5,  19 => 1,);
     }
 }

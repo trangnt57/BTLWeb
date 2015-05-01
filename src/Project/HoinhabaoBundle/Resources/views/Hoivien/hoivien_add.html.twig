@@ -14,46 +14,18 @@
         ul{
               list-style: none;
         }
-
+         .mdi-content-add-circle-outline, .mdi-content-remove-circle-outline{
+            color: blue;
+        }
+        .mdi-content-add-circle-outline:hover, .mdi-content-remove-circle-outline:hover{
+            color: orange;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="{{path('project_hoinhabao_homepage')}}">Trang Chủ</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                        <p style="margin: 0px; padding: 0px;">
-                            <img class="row-avatar" src="{{ asset('bundles/projecthoinhabao/images/ava.png') }}" alt="icon">{{tendangnhap}}
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <ul class="dropdown-menu">
-                      
-                        <li><a href="{{path('project_hoinhabao_show',{'tendangnhap':tendangnhap})}}">Trang cá nhân</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{{path('project_logout')}}">Thoát</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
+    {% include 'ProjectHoinhabaoBundle:Template:header.html.twig' %}
     <div class="container">
         <div class="jumbotron">
             <div class="row">
@@ -63,30 +35,19 @@
                             <legend>Chức năng</legend>
                         </div>
                          <div class="content">
-                            <ul>
-                                {% if vaitro == "admin" %}
-                                    <li>
-                                        <i class="mdi-social-person-add"></i>
-                                        <a href="{{path('project_hoinhabao_add')}}">Thêm hội viên</a>
-                                    </li>
-                                {% endif %}
-                                <li>
-                                    <i class="mdi-action-list"></i>
-                                    <a href="{{path('project_hoinhabao_homepage')}}">Danh sách hội viên</a>
-                                </li>
-                                {% if vaitro == "admin" %}
-                                    <li>
-                                        <i class="mdi-image-filter-none"></i>
-                                        <a href="{{path('project_hoinhabao_report')}}">Báo cáo</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
+                            {% include 'ProjectHoinhabaoBundle:Hoivien:hoivien_function.html.twig' %}
                         </div>
+                        <!--end content-->
                     </div>
                 </div>
                 <div class="col-md-9" style="border-left: 2px solid red;">
                     
-                   
+                        {% for flashMessage in app.session.flashbag.get('add-hoivien') %}
+                             <div class="alert alert-dismissable alert-success">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {{ flashMessage }}
+                            </div>
+                        {% endfor %}
                         {{ form_start(form) }}
     					<fieldset>
                             {% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
@@ -187,7 +148,20 @@
     <script src="{{asset('bundles/projecthoinhabao/js/bootstrap.min.js') }}"></script>
     <script src="{{asset('bundles/projecthoinhabao/material/js/ripples.min.js') }}"></script>
     <script src="{{asset('bundles/projecthoinhabao/material/js/material.min.js') }}"></script>
-
+    <script>
+         $('.mdi-content-add-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-remove-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).show();
+            });
+            $('.mdi-content-remove-circle-outline').click(function(){
+                $(this).hide();
+                $(this).parent().find('.mdi-content-add-circle-outline').show();
+                var thisid = $(this).attr('class').split(' ')[1];
+                $('#'+ thisid).hide();
+            });
+    </script>
 </body>
 
 </html>
