@@ -47,7 +47,12 @@
                     <h3>Thống kê</h3>
                     <ul class="thongke-soluong">
                        {% set tongsohoivien = R_hoivien|length %}
-                        <li><b>Tổng số hội viên:</b> {{tongsohoivien}}</li>
+                        <li><b>Tổng số hội viên:</b> {{tongsohoivien}}
+                            <ul>
+                                <li>Số hội viên kích hoạt: {{hoivien|length}}</li>
+                                <li>Số hội viên chưa kích hoạt: {{inactive|length}}</li>
+                            </ul>
+                        </li>
 
                         {% set tongsotacpham = R_tacpham|length %}
                         <li><b>Tổng số tác phẩm:</b> {{tongsotacpham}}</li>

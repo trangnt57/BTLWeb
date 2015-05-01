@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2015 at 10:47 PM
+-- Generation Time: May 01, 2015 at 11:49 PM
 -- Server version: 5.6.16-log
 -- PHP Version: 5.5.11
 
@@ -34,7 +34,19 @@ CREATE TABLE IF NOT EXISTS `giaithuong` (
   `MoTa` text,
   PRIMARY KEY (`MaGiaiThuong`),
   KEY `FK_2C2DF4A9BB87CF27` (`MaHV`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40006 ;
+
+--
+-- Dumping data for table `giaithuong`
+--
+
+INSERT INTO `giaithuong` (`MaGiaiThuong`, `TenGiaiThuong`, `MaHV`, `NgayDatGiai`, `MoTa`) VALUES
+(40000, 'Cây bút vàng năm 2012', 10000, '2012-12-06', 'Giải thưởng cây bút vàng năm 2012'),
+(40001, 'Cây bút vàng năm 2013', 10002, '2013-12-20', NULL),
+(40002, 'Bản tin cập nhật nhất 2014', 10004, '2014-12-19', NULL),
+(40003, 'Giải sáng tạo', 10005, '2014-12-19', NULL),
+(40004, 'giải nhà báo triển vọng', 10005, '2013-05-04', NULL),
+(40005, 'Bài báo xuất sắc 2012', 10006, '2012-11-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `hoivien` (
   `VaiTro` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`MaHV`),
   KEY `hoivien_ibfk_2` (`MaToaSoan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10007 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10009 ;
 
 --
 -- Dumping data for table `hoivien`
@@ -70,9 +82,11 @@ INSERT INTO `hoivien` (`MaHV`, `TenDangNhap`, `MatKhau`, `HoTen`, `NgaySinh`, `G
 (10001, 'linhbt', 'linhbt123', 'Bùi Thị Linh', '1975-04-08', 'Nữ', NULL, 'TP.Hồ Chí Minh', 'linhbt@gmail.com', 111234893, 'Tốt nghiệp ĐH Khoa Học Xã Hội Và Nhân Văn. Học Thạc sĩ tại Hàn Quốc. Từ khi về nước đến nay làm việc tại tòa soạn báo Dân Trí.', 30001, 1, 'user'),
 (10002, 'hoank', 'hoank123', 'Nguyễn Kiều Hoa', '1980-08-10', 'Nữ', NULL, 'Hà Nội', 'hoank@gmail.com', 121348769, 'Tốt nghiệp Đại Học Văn Hóa. Sau khi ra trường đến năm 2002, làm việc tại tòa soạn báo CAND. Từ năm 2002 đến nay làm việc tại tòa soạn báo Dân Trí.', 30001, 1, 'user'),
 (10003, 'hoangnv', 'hoangnv', 'Nguyễn Việt Hoàng', '1989-10-25', 'Nam', NULL, 'Hải Dương', 'hoangnv@gmail.com', 112345312, 'Tốt nghiệp Đại Học Hà Nội. Từ khi tốt nghiệp đến nay làm việc tại tòa soạn báo HHT.', 30000, 1, 'user'),
-(10004, 'khaibv', 'khaibv123', 'Bùi Văn Khải', '1970-01-02', 'Nam', NULL, 'Hà Nội', 'khaibv@gmail.com', 1112673212, 'Tốt nghiệp Học Viện Báo Chí và Tuyên Truyền. Từ khi tốt nghiệp đến năm 2010 làm việc tại tào soạn báo Hoa Học Trò. Từ năm 2010 đến nay, làm việc tại tòa soạn báo vnexpress.', 30003, 1, 'user'),
+(10004, 'khaibv', 'khaibv123', 'Bùi Văn Khải', '1970-01-02', 'Nam', NULL, 'Hà Nội', 'khaibv@gmail.com', 1112673212, 'Tốt nghiệp Học Viện Báo Chí và Tuyên Truyền. Từ khi tốt nghiệp đến năm 2010 làm việc tại tào soạn báo Hoa Học Trò. Từ năm 2010 đến nay, làm việc tại tòa soạn báo vnexpress.', 30003, 0, 'user'),
 (10005, 'lannn', 'lannn123', 'Nguyễn Ngọc Lan', '1980-04-15', 'Nữ', NULL, 'Hải Dương', 'lannn@gmail.com', 111562892, 'Tốt nghiệp Đại Học Khoa Học Xã Hội Và Nhân Văn. Từ khi tốt nghiệp đến nay, làm việc tại tào soạn báo Vietnamnet.', 30002, 1, 'user'),
-(10006, 'mainn', 'mainn123', 'Nguyễn Ngọc Mai', '1990-08-08', 'Nữ', NULL, 'Hà Nội', 'mainn@gmail.com', 111276526, 'Tốt nghiệp Đại Học Ngoại Ngữ. Từ khi tốt nghiệp đến nay làm việc tại tòa soạn báo HHT.', 30000, 1, 'user');
+(10006, 'mainn', 'mainn123', 'Nguyễn Ngọc Mai', '1990-08-08', 'Nữ', NULL, 'Hà Nội', 'mainn@gmail.com', 111276526, 'Tốt nghiệp Đại Học Ngoại Ngữ. Từ khi tốt nghiệp đến nay làm việc tại tòa soạn báo HHT.', 30000, 1, 'user'),
+(10007, 'admin', 'admin', 'Nguyễn Văn Ngọc', '1989-05-28', 'Nam', NULL, 'Hà Nội', 'admin@gmail.com', 111356343, 'Từ khi tốt nghiệp đến nay làm tại tòa soạn báo Dan Trí', 30001, 1, 'admin'),
+(10008, 'user', 'user', 'Lê Thu Lan', '1990-05-12', 'Nữ', NULL, 'Hà Nội', 'lanlt@gmail.com', 112345252, 'Từ khi tốt nghiệp đến nay làm việc tại tòa soạn báo HHT', 30000, 1, 'user');
 
 -- --------------------------------------------------------
 
@@ -148,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `tinhthanh` (
   `MaTinhThanh` int(11) NOT NULL AUTO_INCREMENT,
   `TenTinhThanh` varchar(50) NOT NULL,
   PRIMARY KEY (`MaTinhThanh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50004 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50005 ;
 
 --
 -- Dumping data for table `tinhthanh`
@@ -158,7 +172,8 @@ INSERT INTO `tinhthanh` (`MaTinhThanh`, `TenTinhThanh`) VALUES
 (50000, 'Hà Nội'),
 (50001, 'TP. Hồ Chí Minh'),
 (50002, 'Hải Phòng'),
-(50003, 'Hải Dương');
+(50003, 'Hải Dương'),
+(50004, 'Khác');
 
 -- --------------------------------------------------------
 
@@ -172,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `toasoan` (
   `MaTinhThanh` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaToaSoan`),
   KEY `FK_34565DE25549239C` (`MaTinhThanh`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30004 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30006 ;
 
 --
 -- Dumping data for table `toasoan`
@@ -182,7 +197,9 @@ INSERT INTO `toasoan` (`MaToaSoan`, `TenToaSoan`, `MaTinhThanh`) VALUES
 (30000, 'Hoa Học Trò', 50000),
 (30001, 'Dân Trí', 50001),
 (30002, 'Vietnamnet', 50002),
-(30003, 'Vnexpress', 50003);
+(30003, 'Vnexpress', 50003),
+(30004, '24h', 50001),
+(30005, 'Khác', 50004);
 
 --
 -- Constraints for dumped tables
